@@ -5,10 +5,130 @@
  */
 package hospitalx.modelo;
 
+import java.util.Date;
+
 /**
  *
- * @author MANUTENÇÃO
+ * @author Jofrasio
  */
 public class Paciente {
+    private int idPaciente;
+    private String nomePaciente;
+    private String sobrenomPaciente;
+    private Date dataNascimentoPaciente;
+    private String sexoPaciente;
+    private String emailPaciente;
+    private String telefonePaciente;
+    private String ruaPaciente;
+    private String casaMedico;
+    private String bairroPaciente;
+    private int idMunicipio;
+
+    public Paciente() {
+    }
+
+    public Paciente(int idPaciente, String nomePaciente, String sobrenomPaciente, Date dataNascimentoPaciente, String sexoPaciente, String emailPaciente, String telefonePaciente, String ruaPaciente, String casaMedico, String bairroPaciente, int idMunicipio) {
+        this.idPaciente = idPaciente;
+        this.nomePaciente = nomePaciente;
+        this.sobrenomPaciente = sobrenomPaciente;
+        this.dataNascimentoPaciente = dataNascimentoPaciente;
+        this.sexoPaciente = sexoPaciente;
+        this.emailPaciente = emailPaciente;
+        this.telefonePaciente = telefonePaciente;
+        this.ruaPaciente = ruaPaciente;
+        this.casaMedico = casaMedico;
+        this.bairroPaciente = bairroPaciente;
+        this.idMunicipio = idMunicipio;
+    }
+
+    public int getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
+    public String getNomePaciente() {
+        return nomePaciente;
+    }
+
+    public void setNomePaciente(String nomePaciente) {
+        this.nomePaciente = nomePaciente;
+    }
+
+    public String getSobrenomPaciente() {
+        return sobrenomPaciente;
+    }
+
+    public void setSobrenomPaciente(String sobrenomPaciente) {
+        this.sobrenomPaciente = sobrenomPaciente;
+    }
+
+    public Date getDataNascimentoPaciente() {
+        return dataNascimentoPaciente;
+    }
+
+    public void setDataNascimentoPaciente(Date dataNascimentoPaciente) {
+        this.dataNascimentoPaciente = dataNascimentoPaciente;
+    }
+
+    public String getSexoPaciente() {
+        return sexoPaciente;
+    }
+
+    public void setSexoPaciente(String sexoPaciente) {
+        this.sexoPaciente = sexoPaciente;
+    }
+
+    public String getEmailPaciente() {
+        return emailPaciente;
+    }
+
+    public void setEmailPaciente(String emailPaciente) {
+        this.emailPaciente = emailPaciente;
+    }
+
+    public String getTelefonePaciente() {
+        return telefonePaciente;
+    }
+
+    public void setTelefonePaciente(String telefonePaciente) {
+        this.telefonePaciente = telefonePaciente;
+    }
+
+    public String getRuaPaciente() {
+        return ruaPaciente;
+    }
+
+    public void setRuaPaciente(String ruaPaciente) {
+        this.ruaPaciente = ruaPaciente;
+    }
+
+    public String getCasaMedico() {
+        return casaMedico;
+    }
+
+    public void setCasaMedico(String casaMedico) {
+        this.casaMedico = casaMedico;
+    }
+
+    public String getBairroPaciente() {
+        return bairroPaciente;
+    }
+
+    public void setBairroPaciente(String bairroPaciente) {
+        this.bairroPaciente = bairroPaciente;
+    }
+
+    public int getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    public void setIdMunicipio(int idMunicipio) {
+        this.idMunicipio = idMunicipio;
+    }
+
+
     
 }
