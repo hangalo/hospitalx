@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class ConexaoDB {
 
-    private String URL = "jdbc:mysql://127.0.0.1:3306/cursojakartaee?useSSL=false&serverTimezone=UTC";
+    private String URL = "jdbc:mysql://127.0.0.1:3306/hospitalx?useSSL=false&serverTimezone=UTC";
     private String DRIVERMYSQL8 = "com.mysql.cj.jdbc.Driver";
     private String DRIVERMYSQL5 = "com.mysql.jdbc.Driver";
     private String USER = "root";
