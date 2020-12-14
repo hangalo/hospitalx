@@ -6,15 +6,12 @@
 package hospitalx.mb;
 
 import hospitalx.dao.FuncionarioDAO;
-import hospitalx.dao.PacienteDAO;
 import hospitalx.modelo.Funcionario;
-import hospitalx.modelo.Paciente;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 
 @Named(value = "funcioarioMB")
