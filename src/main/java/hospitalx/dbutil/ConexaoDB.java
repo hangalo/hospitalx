@@ -32,6 +32,24 @@ public class ConexaoDB {
 
     }
 
+    
+    
+     public static void fecharConexao(Connection c) {
+        fecharConexoes(c, null, null);
+
+    }
+    public static void fecharConexao(Connection c, PreparedStatement ps) {
+        fecharConexoes(c, ps, null);
+
+    }
+    
+    
+
+    public static void fecharConexao(Connection c, PreparedStatement ps, ResultSet rs) {
+        fecharConexoes(c, ps, rs);
+
+    }
+
     private static void fecharConexoes(Connection conn, PreparedStatement ps, ResultSet rs) {
 
         try {
