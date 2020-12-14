@@ -23,12 +23,12 @@ public class Paciente {
     private String casaMedico;
     private String bairroPaciente;
     private String distritoPaciente;
-    private int idMunicipio;
+    private Municipio municipio;
 
     public Paciente() {
     }
 
-    public Paciente(int idPaciente, String nomePaciente, String sobrenomPaciente, Date dataNascimentoPaciente, String sexoPaciente, String emailPaciente, String telefonePaciente, String ruaPaciente, String casaMedico, String bairroPaciente, String distritoPaciente, int idMunicipio) {
+    public Paciente(int idPaciente, String nomePaciente, String sobrenomPaciente, Date dataNascimentoPaciente, String sexoPaciente, String emailPaciente, String telefonePaciente, String ruaPaciente, String casaMedico, String bairroPaciente, String distritoPaciente, Municipio municipio) {
         this.idPaciente = idPaciente;
         this.nomePaciente = nomePaciente;
         this.sobrenomPaciente = sobrenomPaciente;
@@ -40,7 +40,7 @@ public class Paciente {
         this.casaMedico = casaMedico;
         this.bairroPaciente = bairroPaciente;
         this.distritoPaciente = distritoPaciente;
-        this.idMunicipio = idMunicipio;
+        this.municipio = municipio;
     }
 
     public void setDistritoPaciente(String distritoPaciente) {
@@ -133,12 +133,12 @@ public class Paciente {
         this.bairroPaciente = bairroPaciente;
     }
 
-    public int getIdMunicipio() {
-        return idMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public void setIdMunicipio(int idMunicipio) {
-        this.idMunicipio = idMunicipio;
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
 
 

@@ -6,6 +6,7 @@
 package hospitalx.dao;
 
 import hospitalx.dbutil.ConexaoDB;
+import hospitalx.modelo.Municipio;
 import hospitalx.modelo.Paciente;
 import java.sql.Connection;
 import java.sql.Date;
@@ -43,7 +44,7 @@ public class PacienteDAO {
             ps.setString(7, pac.getRuaPaciente());
             ps.setString(8, pac.getBairroPaciente());
             ps.setString(9, pac.getDistritoPaciente());
-            ps.setInt(10, pac.getIdMunicipio());
+            ps.setInt(10, pac.getMunicipio().getIdMunicipio());
             ps.setInt(11, pac.getIdPaciente());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -66,7 +67,7 @@ public class PacienteDAO {
             ps.setString(7, pac.getRuaPaciente());
             ps.setString(8, pac.getBairroPaciente());
             ps.setString(9, pac.getDistritoPaciente());
-            ps.setInt(10, pac.getIdMunicipio());
+            ps.setInt(10, pac.getMunicipio().getIdMunicipio());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao Inserir os dados no Banco de Dados: "+e.getLocalizedMessage());
@@ -109,8 +110,9 @@ public class PacienteDAO {
                pac.setBairroPaciente(rs.getString("p.bairro_paciente"));
                pac.setDistritoPaciente(rs.getString("p.distritito_paciente"));
                
-               // em falta
-               //pac.setIdMunicipio(rs.getInt(""));
+               Municipio m = new Municipio();
+               m.setNomeMunicipio(rs.getString("m.nome_municipio"));
+               pac.setMunicipio(m);
                
                lista.add(pac);
   
@@ -146,8 +148,9 @@ public class PacienteDAO {
                pac.setBairroPaciente(rs.getString("p.bairro_paciente"));
                pac.setDistritoPaciente(rs.getString("p.distritito_paciente"));
                
-               // em falta
-               //pac.setIdMunicipio(rs.getInt(""));
+               Municipio m = new Municipio();
+               m.setNomeMunicipio(rs.getString("m.nome_municipio"));
+               pac.setMunicipio(m);
                
                lista.add(pac);
   
