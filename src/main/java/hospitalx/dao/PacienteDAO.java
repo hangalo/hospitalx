@@ -115,7 +115,6 @@ public class PacienteDAO {
                pac.setMunicipio(m);
                
                lista.add(pac);
-  
            }
           
        } catch (SQLException e) {
@@ -132,7 +131,7 @@ public class PacienteDAO {
        try {
           con = conexao.ligarBB();
           ps = con.prepareStatement(LIST_BY_NAME);
-          ps.setString(1,"%"+ nome+"%");
+          ps.setString(1,"%" + nome + "%");
           rs = ps.executeQuery();
            while (rs.next()) {               
                Paciente pac = new Paciente();

@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Jofrasio
  */
 public class Paciente {
+
     private int idPaciente;
     private String nomePaciente;
     private String sobrenomPaciente;
@@ -42,16 +43,6 @@ public class Paciente {
         this.distritoPaciente = distritoPaciente;
         this.municipio = municipio;
     }
-
-    public void setDistritoPaciente(String distritoPaciente) {
-        this.distritoPaciente = distritoPaciente;
-    }
-
-    public String getDistritoPaciente() {
-        return distritoPaciente;
-    }
-
-    
 
     public int getIdPaciente() {
         return idPaciente;
@@ -133,6 +124,14 @@ public class Paciente {
         this.bairroPaciente = bairroPaciente;
     }
 
+    public void setDistritoPaciente(String distritoPaciente) {
+        this.distritoPaciente = distritoPaciente;
+    }
+
+    public String getDistritoPaciente() {
+        return distritoPaciente;
+    }
+
     public Municipio getMunicipio() {
         return municipio;
     }
@@ -141,6 +140,4 @@ public class Paciente {
         this.municipio = municipio;
     }
 
-
-    
 }
