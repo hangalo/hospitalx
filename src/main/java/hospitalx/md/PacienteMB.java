@@ -5,17 +5,48 @@
  */
 package hospitalx.md;
 
+import hospitalx.dao.PacienteDAO;
+import hospitalx.modelo.Paciente;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
-/**
- *
- * @author MANUTENÇÃO
- */
+
 @Named(value = "pacienteMB")
 @RequestScoped
 public class PacienteMB {
+    Paciente paciente = new Paciente();
+    PacienteDAO pacientedao = new PacienteDAO();
+    List<Paciente> listaPaciente = new ArrayList<>();
+    
+    @PostConstruct 
+    public void inicializar(){
+        listaPaciente = pacientedao.findAll();
+    }
 
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public List<Paciente> getListaPaciente() {
+        return listaPaciente;
+    }
+
+    public void setListaPaciente(List<Paciente> listaPaciente) {
+        this.listaPaciente = listaPaciente;
+    }
+    
+    public String insert() {
+        pacientedao.insert(paciente);
+        paciente = new Paciente();
+        return "paciente?faces-redirect=true";
+    }
     
     
 }
