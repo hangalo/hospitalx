@@ -134,7 +134,7 @@
         
         <p:dialog header="Confirmação" widgetVar="dlDelete">
             <p:outputLabel value="Desejas Eliminar o Registo do Paciente: #{pacienteMB.paciente.nomePaciente} ?"/> 
-            <p:panelGrid columns="2" style="align-items: center">
+            <p:panelGrid columns="2" >
                 <p:commandButton value="Eliminar" action="#{pacienteMB.delete()}" />
                 <p:commandButton value="Cancelar" action="paciente?faces-redirect=true"/>
             </p:panelGrid>

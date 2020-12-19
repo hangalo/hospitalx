@@ -35,9 +35,7 @@ public class PacienteMB {
     }
 
     public List<Paciente> getListaPaciente() {
-        for (Paciente a : listaPaciente) {
-            System.out.println("TestePaciente : " + a.getNomePaciente());
-        }
+        
         return listaPaciente;
     }
 

@@ -33,9 +33,7 @@ public class MunicipioMB implements Serializable {
  
 
     @PostConstruct
-    public void init() {
-
-      
+    public void init() {    
         municipios = municipioDAO.findAll();
     }
 
