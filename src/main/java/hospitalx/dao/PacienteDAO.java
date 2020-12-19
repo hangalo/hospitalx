@@ -26,7 +26,7 @@ public class PacienteDAO {
     private String EDITE= "UPDATE paciente SET nome_paciente = ?, sobrenom_paciente = ?, data_nascimento_paciente = ?, sexo_paciente = ?, email_paciente = ?, telefone_paciente = ?, rua_paciente = ?, casa_medico = ?, bairro_paciente = ?, distritito_paciente = ?, id_municipio = ? WHERE id_paciente = ?";
     private String DELETE = "DELETE FROM paciente WHERE id_paciente = ?;";
     private String LIST_BY_NAME="SELECT p.id_paciente, p.nome_paciente, p.sobrenom_paciente, p.data_nascimento_paciente, p.sexo_paciente, p.email_paciente, p.telefone_paciente, p.rua_paciente, p.casa_medico, p.bairro_paciente, p.distritito_paciente, m.nome_municipio FROM paciente p INNER JOIN municipio m ON p.id_municipio = m.id_municipio  WHERE p.nome_paciente LIKE ?";
-    
+    private String INSERTE = "INSERT INTO `paciente` (`nome_paciente`, `sobrenom_paciente`, `data_nascimento_paciente`, `sexo_paciente`, `email_paciente`, `telefone_paciente`, `rua_paciente`, `casa_medico`, `bairro_paciente`, `distritito_paciente`, `id_municipio`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     ConexaoDB conexao = new ConexaoDB();
     
     public void update(Paciente pac){
@@ -42,10 +42,11 @@ public class PacienteDAO {
             ps.setString(5, pac.getEmailPaciente());
             ps.setString(6, pac.getTelefonePaciente());
             ps.setString(7, pac.getRuaPaciente());
-            ps.setString(8, pac.getBairroPaciente());
-            ps.setString(9, pac.getDistritoPaciente());
-            ps.setInt(10, pac.getMunicipio().getIdMunicipio());
-            ps.setInt(11, pac.getIdPaciente());
+            ps.setString(8, pac.getCasaMedico());
+            ps.setString(9, pac.getBairroPaciente());
+            ps.setString(10, pac.getDistritoPaciente());
+            ps.setInt(11, pac.getMunicipio().getIdMunicipio());
+            ps.setInt(12, pac.getIdPaciente());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao Actualizar o Registro: "+e.getLocalizedMessage());
@@ -57,7 +58,7 @@ public class PacienteDAO {
         PreparedStatement ps;
         try {
             Connection con = conexao.ligarBB();
-            ps = con.prepareStatement(INSERT);
+            ps = con.prepareStatement(INSERTE);
             ps.setString(1, pac.getNomePaciente());
             ps.setString(2, pac.getSobrenomPaciente());
             ps.setDate(3, (Date) pac.getDataNascimentoPaciente());
@@ -65,9 +66,10 @@ public class PacienteDAO {
             ps.setString(5, pac.getEmailPaciente());
             ps.setString(6, pac.getTelefonePaciente());
             ps.setString(7, pac.getRuaPaciente());
-            ps.setString(8, pac.getBairroPaciente());
-            ps.setString(9, pac.getDistritoPaciente());
-            ps.setInt(10, pac.getMunicipio().getIdMunicipio());
+            ps.setString(8, pac.getCasaMedico());
+            ps.setString(9, pac.getBairroPaciente());
+            ps.setString(10, pac.getDistritoPaciente());
+            ps.setInt(11, pac.getMunicipio().getIdMunicipio());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao Inserir os dados no Banco de Dados: "+e.getLocalizedMessage());

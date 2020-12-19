@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Gerir Paciente</title>
+    </h:head>
+    <h:body>
+        <p:panel header="Novo Paciente">
+            
+            <h:form>
+            
+            <p:panelGrid columns="2" >
+                <p:outputLabel value="Nome:" />
+                <p:inputText value="#{pacienteMB.paciente.nomePaciente}" />  
+                <p:outputLabel value="Sobre Nome:"/>
+                <p:inputText value="#{pacienteMB.paciente.sobrenomPaciente}"/>
+                <p:outputLabel value="Data de Nascimento" />
+                <p:datePicker value="#{pacienteMB.paciente.dataNascimentoPaciente}" />
+                <p:outputLabel value="Sexo"/>
+                <p:selectOneMenu id="sexo" value="#{pacienteMB.paciente.sexoPaciente}">
+                    <f:selectItem itemLabel="Selecione o Sexo" itemValue="" />
+                    <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                    <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                </p:selectOneMenu>
+                <p:outputLabel value="Email" />
+                <p:inputText value="#{pacienteMB.paciente.emailPaciente}" />
+                <p:outputLabel value="Telefone" />
+                <p:inputText value="#{pacienteMB.paciente.telefonePaciente}" />
+                <p:outputLabel value="Rua" />
+                <p:inputText value="#{pacienteMB.paciente.ruaPaciente}" />
+                <p:outputLabel value="Casa" />
+                <p:inputText value="#{pacienteMB.paciente.casaMedico}" />
+                <p:outputLabel value="Bairro" />
+                <p:inputText value="#{pacienteMB.paciente.bairroPaciente}" />
+                <p:outputLabel value="Distritu" />
+                <p:inputText value="#{pacienteMB.paciente.distritoPaciente}" />
+                <h:outputLabel value="Municipio"/>
+                <p:selectOneMenu value="#{pacienteMB.paciente.municipio}" converter="municipioConverver">
+                     <f:selectItem itemLabel="Seleccione uma provincia" noSelectionOption="true"/>
+                     <f:selectItems value="#{municipioMB.municipios}" var="m" itemLabel="#{m.nomeMunicipio}" itemValue="#{m}"/>             
+                </p:selectOneMenu>
+                
+            </p:panelGrid>
+            <p:commandButton  value="Guardar" action="#{pacienteMB.insert}"/>
+        </h:form>
+          </p:panel>
+        <h1 align="center">Lista de Pacientes</h1>
+        <p:dataTable value="#{pacienteMB.listaPaciente}" var="pac">
+            <p:column headerText="Nome">
+                <h:outputText value="#{pac.nomePaciente}" />
+            </p:column>
+
+            <p:column headerText="Sobre Nome">
+                <h:outputText value="#{pac.sobrenomPaciente}" />
+            </p:column>
+            <p:column headerText="Data de Nascimento" >
+                <h:outputText value="#{pac.dataNascimentoPaciente}"/>
+            </p:column>
+            <p:column headerText="Sexo">
+                <h:outputText value="#{pac.sexoPaciente}"/>
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{pac.emailPaciente}"/>
+            </p:column>
+            <p:column headerText="Telefone">
+                <h:outputText value="#{pac.telefonePaciente}"   />
+            </p:column>
+            <p:column headerText="Distrito">
+                <h:outputText value="#{pac.distritoPaciente}"/>
+            </p:column>
+            <p:column headerText="Município">
+                <h:outputText value="#{pac.municipio.nomeMunicipio}"/>
+            </p:column>
+            <p:column headerText="Bairro">
+                <h:outputText value="#{pac.bairroPaciente}"/>
+            </p:column>
+            <p:column headerText="Rua" >
+                <h:outputText value="#{pac.ruaPaciente}"/>
+            </p:column>
+            <p:column headerText="Operações">
+                <p:commandLink value="Editar" onclick="PF('dlEditar').show();">
+                    <f:setPropertyActionListener target="#{pacienteMB.paciente}" value="#{pac}"/> 
+                </p:commandLink>
+                <h:outputLabel value=" | | " />
+                <h:commandLink value="Eliminar" onclick="PF('dlDelete').show();">
+                    <f:setPropertyActionListener target="#{pacienteMB.paciente}" value="#{pac}"/>
+                </h:commandLink>
+            </p:column>
+        </p:dataTable>
+        
+        <p:dialog header="Editar Registo" widgetVar="dlEditar">
+            <p:panel header="Editar Paciente">
+            
+        <h:form>
+            <p:panelGrid columns="2" >
+                <p:outputLabel value="Nome:" />
+                <p:inputText value="#{pacienteMB.paciente.nomePaciente}" />  
+                <p:outputLabel value="Sobre Nome:"/>
+                <p:inputText value="#{pacienteMB.paciente.sobrenomPaciente}"/>
+                <p:outputLabel value="Data de Nascimento" />
+                <p:datePicker value="#{pacienteMB.paciente.dataNascimentoPaciente}" />
+                <p:outputLabel value="Sexo"/>
+                <p:selectOneMenu id="sexo" value="#{pacienteMB.paciente.sexoPaciente}">
+                    <f:selectItem itemLabel="Selecione o Sexo" itemValue="" />
+                    <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                    <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                </p:selectOneMenu>
+                <p:outputLabel value="Email" />
+                <p:inputText value="#{pacienteMB.paciente.emailPaciente}" />
+                <p:outputLabel value="Telefone" />
+                <p:inputText value="#{pacienteMB.paciente.telefonePaciente}" />
+                <p:outputLabel value="Rua" />
+                <p:inputText value="#{pacienteMB.paciente.ruaPaciente}" />
+                <p:outputLabel value="Casa" />
+                <p:inputText value="#{pacienteMB.paciente.casaMedico}" />
+                <p:outputLabel value="Bairro" />
+                <p:inputText value="#{pacienteMB.paciente.bairroPaciente}" />
+                <p:outputLabel value="Distritu" />
+                <p:inputText value="#{pacienteMB.paciente.distritoPaciente}" />
+                <h:outputLabel value="Municipio"/>
+                <p:selectOneMenu value="#{pacienteMB.paciente.municipio}" converter="municipioConverver">
+                     <f:selectItem itemLabel="Seleccione uma provincia" noSelectionOption="true"/>
+                     <f:selectItems value="#{municipioMB.municipios}" var="m" itemLabel="#{m.nomeMunicipio}" itemValue="#{m}"/>             
+                </p:selectOneMenu>
+                
+            </p:panelGrid>
+            <p:commandButton  value="Guardar" action="#{pacienteMB.finishEdit()}"/>
+        </h:form>
+          </p:panel>
+        </p:dialog>
+        
+        <p:dialog header="Confirmação" widgetVar="dlDelete">
+            <p:outputLabel value="Desejas Eliminar o Registo do Paciente: #{pacienteMB.paciente.nomePaciente} ?"/> 
+            <p:panelGrid columns="2" style="align-items: center">
+                <p:commandButton value="Eliminar" action="#{pacienteMB.delete()}" />
+                <p:commandButton value="Cancelar" action="paciente?faces-redirect=true"/>
+            </p:panelGrid>
+        </p:dialog>
+        
+    </h:body>
+</html>
+

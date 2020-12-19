@@ -28,6 +28,8 @@ public class MunicipioMB implements Serializable {
     MunicipioDAO municipioDAO = new MunicipioDAO();
    
     List<Municipio> municipios = new ArrayList<>();
+
+   
  
 
     @PostConstruct
@@ -37,7 +39,13 @@ public class MunicipioMB implements Serializable {
         municipios = municipioDAO.findAll();
     }
 
-  
+   public List<Municipio> getMunicipios() {
+        return municipios;
+    }
+
+    public void setMunicipios(List<Municipio> municipios) {
+        this.municipios = municipios;
+    }
    
 
     public Municipio getMunicipio() {

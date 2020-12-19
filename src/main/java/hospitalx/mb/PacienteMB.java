@@ -13,16 +13,16 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
-
 @Named(value = "pacienteMB")
 @RequestScoped
 public class PacienteMB {
+
     Paciente paciente = new Paciente();
     PacienteDAO pacientedao = new PacienteDAO();
     List<Paciente> listaPaciente = new ArrayList<>();
-    
-    @PostConstruct 
-    public void inicializar(){
+
+    @PostConstruct
+    public void inicializar() {
         listaPaciente = pacientedao.findAll();
     }
 
@@ -35,18 +35,34 @@ public class PacienteMB {
     }
 
     public List<Paciente> getListaPaciente() {
+        for (Paciente a : listaPaciente) {
+            System.out.println("TestePaciente : " + a.getNomePaciente());
+        }
         return listaPaciente;
     }
 
     public void setListaPaciente(List<Paciente> listaPaciente) {
         this.listaPaciente = listaPaciente;
     }
-    
+
     public String insert() {
         pacientedao.insert(paciente);
         paciente = new Paciente();
         return "paciente?faces-redirect=true";
     }
+
+    public String startEdit() {
+        return "paciente-edit";
+    }
+
+    public String finishEdit() {
+        pacientedao.update(paciente);
+        return "paciente";
+    }
     
-    
+    public String delete() {
+        pacientedao.delete(paciente);
+        return "paciente?faces-redirect=true";
+    }
+
 }
