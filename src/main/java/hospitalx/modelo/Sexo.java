@@ -5,10 +5,6 @@
  */
 package hospitalx.modelo;
 
-/**
- *
- * @author informatica
- */
 public enum Sexo {
     MASCULINO("M", "Masculino"), FEMENINO("F", "Femenino");
     

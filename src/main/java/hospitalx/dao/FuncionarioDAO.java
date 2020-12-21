@@ -27,7 +27,7 @@ public class FuncionarioDAO {
     private static final String ELIMINAR = "DELETE FROM funcionario WHERE id_funcionario = ?";
     private static final String BUSCAR_POR_CODIGO = "SELECT id_funcionario, nome_funcionario, sobrenom_funcionario, data_nascimento_funcionario, sexo_funcionario, email_funcionario, telefone_funcionario, rua_funcionario, casa_funcionario, bairro_funcionario,  distritito_funcionario,  nome_municipio FROM funcionario f INNER JOIN municipio m ON f.id_municipio = f.id_municipio WHERE id_funcionario = ?";
     private static final String BUSCAR_POR_NOME = "SELECT id_funcionario, nome_funcionario, sobrenom_funcionario, data_nascimento_funcionario, sexo_funcionario, email_funcionario, telefone_funcionario, rua_funcionario, casa_funcionario, bairro_funcionario,  distritito_funcionario,  nome_municipio FROM funcionario f INNER JOIN municipio m ON f.id_municipio = f.id_municipio WHERE nome_funcionario LIKE ? OR sobrenom_funcionario LIKE ?";
-    private static final String LISTAR_TUDO = "SELECT id_funcionario, nome_funcionario, sobrenom_funcionario, data_nascimento_funcionario, sexo_funcionario, email_funcionario, telefone_funcionario, rua_funcionario, casa_funcionario, bairro_funcionario,  distritito_funcionario,  nome_municipio FROM funcionario f INNER JOIN municipio m ON f.id_municipio = f.id_municipio";
+    private static final String LISTAR_TUDO = "SELECT id_funcionario, nome_funcionario, sobrenom_funcionario, data_nascimento_funcionario, sexo_funcionario, email_funcionario, telefone_funcionario, rua_funcionario, casa_funcionario, bairro_funcionario,  distritito_funcionario,  nome_municipio FROM funcionario f INNER JOIN municipio m ON f.id_municipio = m.id_municipio";
    
     
     ConexaoDB conexaoDB = new ConexaoDB();
@@ -136,7 +136,7 @@ public class FuncionarioDAO {
         try {
             conn = conexaoDB.ligarBB();
 
-            ps = conn.prepareStatement(BUSCAR_POR_CODIGO);
+            ps = conn.prepareStatement(BUSCAR_POR_NOME);
             ps.setString(1, "%" + valor + "%");
             ps.setString(2, "%" + valor + "%");
             rs = ps.executeQuery();
@@ -157,7 +157,6 @@ public class FuncionarioDAO {
 
     private void popularComDados(Funcionario funcionario, ResultSet rs) {
         try {
-
             funcionario.setIdFuncionario(rs.getInt("id_funcionario"));
             funcionario.setNomeFuncionario(rs.getString("nome_funcionario"));
             funcionario.setSobrenomFuncionario(rs.getString("sobrenom_funcionario"));
