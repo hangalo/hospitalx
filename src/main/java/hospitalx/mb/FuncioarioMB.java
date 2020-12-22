@@ -7,12 +7,14 @@ package hospitalx.mb;
 
 import hospitalx.dao.FuncionarioDAO;
 import hospitalx.modelo.Funcionario;
+import hospitalx.modelo.Sexo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.model.SelectItem;
 
 @Named(value = "funcioarioMB")
 @SessionScoped
@@ -27,6 +29,28 @@ public class FuncioarioMB implements Serializable {
         listaFuncionarios = funcionarioDao.findAll();
     }
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public List<Funcionario> getListaFuncionarios() {
+        return listaFuncionarios;
+    }
+
+    public void setListaFuncionarios(List<Funcionario> listaFuncionarios) {
+        this.listaFuncionarios = listaFuncionarios;
+    }
+
+    
+    
+    
+    
+    
+    
     public String insert() {
         funcionarioDao.insert(funcionario);
         funcionario = new Funcionario();
@@ -47,5 +71,13 @@ public class FuncioarioMB implements Serializable {
         funcionarioDao.update(funcionario);
         funcionario = new Funcionario();
         return "funcionario-lista?faces-redirect=true";
+    }
+    
+     public List<SelectItem> getOpSexos() {
+        List<SelectItem> list = new ArrayList<>();
+        for (Sexo sexo : Sexo.values()) {
+            list.add(new SelectItem(sexo, sexo.getExtensao()));
+        }
+        return list;
     }
 }
