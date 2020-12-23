@@ -17,7 +17,7 @@ public class ConexaoDB {
     private String DRIVERMYSQL8 = "com.mysql.cj.jdbc.Driver";
     private String DRIVERMYSQL5 = "com.mysql.jdbc.Driver";
     private String USER = "root";
-    private String PASSWORD = "root";
+    private String PASSWORD = "Eng90x?";
     private Connection conn;
 
     public Connection ligarBB() {

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Gestão de Camas</title>
+    </h:head>
+    <h:body>
+       
+         <p:panel header="Nova Cama">
+
+             <h:form>
+                 
+                 
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Numero da Cama:" />
+                            <p:inputText value="#{camaMB.cama.numeroCama}" />  
+                        </p:panelGrid>
+                   <p:commandButton  value="Guardar" action="#{camaMB.insert}"/>  
+             </h:form>
+            
+         </p:panel>    
+        
+        <h1 align="center">Lista de Camas</h1>
+        <p:dataTable value="#{camaMB.listaCama}" var="pac">
+            <p:column headerText="Numero de Cama">
+                <h:outputText value="#{pac.numeroCama}" />
+            </p:column>
+            
+            
+           <p:column headerText="Operações">
+                <p:commandLink value="Editar" onclick="PF('dlEditar').show();">
+                    <f:setPropertyActionListener target="#{camaMB.cama}" value="#{pac}"/> 
+                </p:commandLink>
+                <h:outputLabel value=" | | " />
+                <h:commandLink value="Eliminar" onclick="PF('dlDelete').show();">
+                    <f:setPropertyActionListener target="#{camaMB.cama}" value="#{pac}"/>
+                </h:commandLink>
+            </p:column> 
+        </p:dataTable>
+        
+        
+         <p:dialog header="Editar Registo" widgetVar="dlEditar">
+            <p:panel header="Editar Cama">
+
+                <h:form>
+                    <p:panelGrid columns="2" >
+                        <p:outputLabel value="Numero da Cama:" />
+                        <p:inputText value="#{camaMB.cama.numeroCama}" />  
+                        
+                    </p:panelGrid>
+                    <p:commandButton  value="Guardar" action="#{camaMB.finishEdit()}"/>
+                </h:form>
+            </p:panel>
+        </p:dialog>
+
+        
+        <p:dialog header="Confirmação" widgetVar="dlDelete">
+            <p:outputLabel value="Desejas Eliminar o Registo da Cama: #{camaMB.cama.numeroCama} ?"/> 
+            <p:panelGrid columns="2" >
+                <p:commandButton value="Eliminar" action="#{camaMB.delete()}" />
+                <p:commandButton value="Cancelar" action="cama?faces-redirect=true"/>
+            </p:panelGrid>
+        </p:dialog>
+    </h:body>
+</html>
+
