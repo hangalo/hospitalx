@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author Jofrasio
+ * @author Nécia Caculo
  */
 public class Cama {
 

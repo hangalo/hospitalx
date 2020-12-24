@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *
- * @author Jofrásio
+ * @author Nécia Caculo
  */
 public class CamaDAO {
     private String SELECT_ALL = "SELECT p.id_cama, p.numero_cama FROM cama p";

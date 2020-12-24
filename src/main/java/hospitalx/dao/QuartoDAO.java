@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *
- * @author Jofrásio
+ * @author Nécia Caculo
  */
 public class QuartoDAO {
     private String SELECT_ALL = "SELECT p.id_quarto, p.sigla_quarto FROM quarto p ";
