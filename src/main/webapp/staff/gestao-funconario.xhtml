@@ -5,27 +5,75 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Gestão dos Funcionarios</title>
+        <title>#{msg['gestao-funcionarios']}</title>
     </h:head>
     <h:body>
-        <p:dialog header="Novo Funcionario" widgetVar="dlgoNovoFuncionario">
+        <p:dialog header="#{msg['novo-funcionario']}" widgetVar="dlgoNovoFuncionario">
             <h:form>
 
-                <p:outputLabel value="Sexo:"/>
+
+                <p:outputLabel value="#{msg['nome']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.nomeFuncionario}"/>
+
+                <p:outputLabel value="#{msg['sobrenome']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.sobrenomFuncionario}"/>
+                <p:outputLabel value="#{msg['sexo']}"/>
                 <p:selectOneRadio id="sexo" value="#{funcioarioMB.funcionario.sexoFuncionario}">
                     <f:selectItems value="#{funcioarioMB.opSexos}" />
                 </p:selectOneRadio >
 
+
+                <p:outputLabel value="#{msg['data-nascimento']}"/>
+                <p:calendar value="#{funcioarioMB.funcionario.dataNascimento}" pattern="dd/MM/yy"/>
+
+                <p:outputLabel value="#{msg['telefone']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.telefoneFuncionario}"/>
+
+                <p:outputLabel value="#{msg['email']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.emailFuncionario}"/>
+
+                <p:outputLabel value="#{msg['casa']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.casaFuncionario}"/>
+
+                <p:outputLabel value="#{msg['rua']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.ruaFuncionario}"/>
+
+                <p:outputLabel value="#{msg['bairro']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.bairroFuncionario}"/>
+
+                <p:outputLabel value="#{msg['distritito']}"/>
+                <h:inputText value="#{funcioarioMB.funcionario.distrititoFuncionario}"/>
+
+                <p:outputLabel value="#{msg['municipio']}"/>
+                <p:selectOneMenu id="sexo" value="#{funcioarioMB.funcionario.municipio}" converter="municipioConverver">
+                    <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{municipioMB.municipios}" />
+                </p:selectOneMenu> >
+
+
             </h:form>
         </p:dialog>
-        
+
+
+
+
         <p:dataTable value="#{funcioarioMB.listaFuncionarios}" var="f">
-            <p:column headerText="Nome">
+            <p:column headerText="#{msg['nome']}">
                 <h:outputText value="#{f.nomeFuncionario}"/>
             </p:column>
-            
+            <p:column headerText="#{msg['sobrenome']}">
+                <h:outputText value="#{f.sobrenomFuncionario}"/>
+            </p:column>
+            <p:column headerText="#{msg['data-nascimento']}">
+                <h:outputText value="#{f.dataNascimento}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+            </p:column>
+
+
+
         </p:dataTable>
-        
+
     </h:body>
 </html>
 
