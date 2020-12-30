@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  *
- * @author Jofrásio
+ * @author Necia
  */
 public class InternamentoDAO {
     private String SELECT_ALL = "SELECT i.id_internamento, i.data, q.sigla_quarto, c.numero_cama, p.nome_paciente, m.nome_medico  FROM internamento i INNER JOIN quarto q ON q.id_quarto = i.id_quarto INNER JOIN cama c ON c.id_cama = i.id_cama INNER JOIN paciente p ON p.id_paciente = i.id_paciente INNER JOIN medico m ON m.id_medico = i.id_medico";
