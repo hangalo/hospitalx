@@ -12,6 +12,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 
 @Named(value = "pacienteMB")
 @RequestScoped
@@ -61,6 +62,14 @@ public class PacienteMB {
     public String delete() {
         pacientedao.delete(paciente);
         return "paciente?faces-redirect=true";
+    }
+    
+    public List<SelectItem> getSelectPacientes() {
+        List<SelectItem> lista = new ArrayList<>();
+        for (Paciente m : pacientedao.findAll()) {
+            lista.add(new SelectItem(m, m.getNomePaciente()));
+        }
+        return lista;
     }
 
 }
