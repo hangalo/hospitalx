@@ -11,7 +11,7 @@
          <div id="wrapper" style="width: 90%; margin: auto; ">
 
             <div id="menu">
-                <b:navBar brand="#{app['titulo-sistema']}" brandHref="#" fluid="true" >
+                <b:navBar brand="#{app['titulo-sistema']}" brandHref="../../index.jsf" fluid="true" >
 
                     
                     <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
@@ -57,17 +57,16 @@
                     <b:jumbotron style="text-align: center; ">
                       
                         <h2 style="color: #8B4513;font-size: 3em; margin-bottom: 30px;">#{app['titulo-sistema']}</h2>
-                        <h2 style="color: #8B4513;font-size: 3em; margin-bottom: 30px;">#{app['sistema-gestao-hospitalar']}</h2>
-                        
+                        <h2 style="color: #8B4513;font-size: 3em; margin-bottom: 30px;">#{app['gestao-exames']}</h2>
+                       
+                         
+                         
                         <div>
- 
-                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/pacientes/index-admin-pacientes.jsf">#{app['gestao-pacientes']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/exames/index-admin-exames.jsf">#{app['gestao-exames']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/consultas/index-admin-consultas.jsf">#{app['gestao-consultas']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/internamentos/index-admin-internamentos.jsf">#{app['gestao-internamentos']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/funcionarios/index-admin-funcionarios.jsf">#{app['gestao-funcionarios']}</a>
                            
-                           
+                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="#">#{app['novo']}</a>
+                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="#">#{app['listar']}</a>
+                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="#">#{app['procurar']}</a>
+                            
 
                         </div>
                          
