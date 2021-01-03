@@ -8,51 +8,114 @@
         <title>#{msg['gestao-funcionarios']}</title>
     </h:head>
     <h:body>
-        <p:dialog header="#{msg['novo-funcionario']}" widgetVar="dlgoNovoFuncionario">
-            <h:form>
+
+        <p:panel header="#{app['novo']}#{msg['funcionario']}">
+
+        <h:form>
+
+            <h:panelGrid columns="2">
+                <h:panelGroup>
+                    <p:panelGrid columns="1">
+                        <p:outputLabel value="#{msg['nome']}"/>
+                        <h:inputText value="#{funcioarioMB.funcionario.nomeFuncionario}" size="40"/>
+                    </p:panelGrid>
+                </h:panelGroup>
+
+                <h:panelGroup>
+                    <p:panelGrid columns="1">
+                        <p:outputLabel value="#{msg['sobrenome']}"/>
+                        <h:inputText value="#{funcioarioMB.funcionario.sobrenomFuncionario}" size="40"/>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2">
+                <h:panelGroup>
+                    <p:panelGrid columns="1">
+                        <p:outputLabel value="#{msg['sexo']}"/>
+                    </p:panelGrid>
+                    <p:panelGrid columns="2">
+                        <p:selectOneRadio id="sexo" value="#{funcioarioMB.funcionario.sexoFuncionario}">
+                            <f:selectItems value="#{funcioarioMB.opSexos}" />
+                        </p:selectOneRadio >
+                    </p:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['data-nascimento']}"/>
+                            <p:calendar value="#{funcioarioMB.funcionario.dataNascimento}" pattern="dd/MM/yy"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGrid>
 
 
-                <p:outputLabel value="#{msg['nome']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.nomeFuncionario}"/>
+            <h:panelGrid columns="2">
 
-                <p:outputLabel value="#{msg['sobrenome']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.sobrenomFuncionario}"/>
-                <p:outputLabel value="#{msg['sexo']}"/>
-                <p:selectOneRadio id="sexo" value="#{funcioarioMB.funcionario.sexoFuncionario}">
-                    <f:selectItems value="#{funcioarioMB.opSexos}" />
-                </p:selectOneRadio >
+                <h:panelGroup>
+                    <p:panelGrid columns="1">
+                        <p:outputLabel value="#{msg['telefone']}"/>
+                        <h:inputText value="#{funcioarioMB.funcionario.telefoneFuncionario}" size="35"/>
+                    </p:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <p:panelGrid columns="1">
+                        <p:outputLabel value="#{msg['email']}"/>
+                        <h:inputText value="#{funcioarioMB.funcionario.emailFuncionario}" size="35"/>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:panelGrid>
+
+            <p:fieldset legend="#{msg['endereco']}">
+                <h:panelGrid columns="5">
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['casa']}"/>
+                            <h:inputText value="#{funcioarioMB.funcionario.casaFuncionario}"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['rua']}"/>
+                            <h:inputText value="#{funcioarioMB.funcionario.ruaFuncionario}"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['bairro']}"/>
+                            <h:inputText value="#{funcioarioMB.funcionario.bairroFuncionario}"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['distritito']}"/>
+                            <h:inputText value="#{funcioarioMB.funcionario.distrititoFuncionario}"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
 
 
-                <p:outputLabel value="#{msg['data-nascimento']}"/>
-                <p:calendar value="#{funcioarioMB.funcionario.dataNascimento}" pattern="dd/MM/yy"/>
-
-                <p:outputLabel value="#{msg['telefone']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.telefoneFuncionario}"/>
-
-                <p:outputLabel value="#{msg['email']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.emailFuncionario}"/>
-
-                <p:outputLabel value="#{msg['casa']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.casaFuncionario}"/>
-
-                <p:outputLabel value="#{msg['rua']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.ruaFuncionario}"/>
-
-                <p:outputLabel value="#{msg['bairro']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.bairroFuncionario}"/>
-
-                <p:outputLabel value="#{msg['distritito']}"/>
-                <h:inputText value="#{funcioarioMB.funcionario.distrititoFuncionario}"/>
-
-                <p:outputLabel value="#{msg['municipio']}"/>
-                <p:selectOneMenu id="sexo" value="#{funcioarioMB.funcionario.municipio}" converter="municipioConverver">
-                    <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
-                    <f:selectItems value="#{municipioMB.municipios}" />
-                </p:selectOneMenu> >
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['municipio']}"/>
+                            <p:selectOneMenu id="municipio" value="#{funcioarioMB.funcionario.municipio}" converter="municipioConverver">
+                                <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{municipioMB.municipios}" />
+                            </p:selectOneMenu> 
+                        </p:panelGrid>
+                    </h:panelGroup>
+                </h:panelGrid>
 
 
-            </h:form>
-        </p:dialog>
+            </p:fieldset>
+            <h:panelGrid columns="2">
+                <h:commandButton value="#{app['guardar']}"/>
+                <h:commandButton value="#{app['cancelar']}"/>
+            </h:panelGrid>
+        </h:form>
+</p:panel>
 
 
 
