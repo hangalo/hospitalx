@@ -26,7 +26,7 @@ public class FuncioarioMB implements Serializable {
 
     @PostConstruct
     public void inicializar() {
-      //  listaFuncionarios = funcionarioDao.findAll();
+//        listaFuncionarios = funcionarioDao.findAll();
     }
 
     public Funcionario getFuncionario() {
