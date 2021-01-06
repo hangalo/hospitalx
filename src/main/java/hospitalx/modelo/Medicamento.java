@@ -46,6 +46,13 @@ public class Medicamento {
     public void setValidadeMedicamento(Date validadeMedicamento) {
         this.validadeMedicamento = validadeMedicamento;
     }
+
+    public Object getData() {
+        throw new UnsupportedOperationException("Not supported yet."); }
+
+    public void setData(java.sql.Date date) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
      
      
 }
