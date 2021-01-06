@@ -5,8 +5,6 @@
  */
 package hospitalx.mb;
 
-
-
 import hospitalx.dao.EspecialidadeDAO;
 import hospitalx.modelo.Especialidade;
 import java.io.Serializable;
@@ -16,8 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 
-   
-    @Named(value = "EspecialidadeMB")
+@Named(value = "EspecialidadeMB")
 @SessionScoped
 public class EspecialidadeMB implements Serializable {
 
@@ -69,8 +66,5 @@ public class EspecialidadeMB implements Serializable {
         Especialidade = new Especialidade();
         return "especialidade-lista?faces-redirect=true";
     }
-    
-    }
 
-    
-
+}

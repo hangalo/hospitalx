@@ -29,13 +29,13 @@ public class MedicamentoDAO {
     }
 
     public void insert(Medicamento medicamento) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     private static class medicamentos {
 
         private static void add(Medicamento medicamento) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not supported yet."); 
         }
 
         public medicamentos() {
