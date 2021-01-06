@@ -2,7 +2,6 @@
 package hospitalx.mb;
 
 import hospitalx.dao.MedicamentoDAO;
-import hospitalx.modelo.Funcionario;
 import hospitalx.modelo.Medicamento;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class MedicamentoMB implements Serializable {
         return listaMedicamentos;
     }
 
-    public void setListaFuncionarios(List<Funcionario> listaFuncionarios) {
+    public void setListaMedicamentos(List<Medicamento> listaMedicamentos) {
         this.listaMedicamentos = listaMedicamentos;
     }
 
@@ -53,7 +52,7 @@ public class MedicamentoMB implements Serializable {
     }
 
     public String prepararEditar() {
-        return "funcionario-editar";
+        return "medicamento-editar";
     }
 
     public String editar() {

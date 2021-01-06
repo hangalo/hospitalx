@@ -9,7 +9,6 @@ package hospitalx.mb;
 
 import hospitalx.dao.EspecialidadeDAO;
 import hospitalx.modelo.Especialidade;
-import hospitalx.modelo.Funcionario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +39,11 @@ public class EspecialidadeMB implements Serializable {
         this.especialidade = especialidade;
     }
 
-    public List<Especialidade> getListaMedicamentos() {
+    public List<Especialidade> getListaEspecialidades() {
         return listaEspecialidades;
     }
 
-    public void setListaFuncionarios(List<Funcionario> listaFuncionarios) {
+    public void setListaEspecialidades(List<Especialidade> listaEspecialidades) {
         List<Especialidade> listaespecialidades = null;
         this.listaEspecialidades = listaespecialidades;
     }
@@ -62,7 +61,7 @@ public class EspecialidadeMB implements Serializable {
     }
 
     public String prepararEditar() {
-        return "funcionario-editar";
+        return "especialidade-editar";
     }
 
     public String editar() {
