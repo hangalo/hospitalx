@@ -7,17 +7,17 @@ package hospitalx.modelo;
 
 import java.util.Date;
 
-
 public class Medicamento {
-    
+
     private int idMedicamento;
     private String nomeMedicamento;
     private Date validadeMedicamento;
-    
-     public Medicamento() {
+    private Date data;
+
+    public Medicamento() {
     }
 
-     public Medicamento(int idMedicamento, String nomeMedicamento,Date ValidadeMedicamento){
+    public Medicamento(int idMedicamento, String nomeMedicamento, Date ValidadeMedicamento) {
         this.idMedicamento = idMedicamento;
         this.nomeMedicamento = nomeMedicamento;
         this.validadeMedicamento = validadeMedicamento;
@@ -47,12 +47,12 @@ public class Medicamento {
         this.validadeMedicamento = validadeMedicamento;
     }
 
-    public Object getData() {
-        throw new UnsupportedOperationException("Not supported yet."); }
-
-    public void setData(java.sql.Date date) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Date getData() {
+        return data;
     }
-     
-     
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
 }

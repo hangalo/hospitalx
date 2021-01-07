@@ -92,7 +92,7 @@ public class MedicamentoDAO {
             conn = conexaoDB.ligarBB();
             ps = conn.prepareStatement(ACTUALIZAR);
             ps.setString(1, m.getNomeMedicamento());
-            ps.setDate(2, new java.sql.Date((long) m.getData()));
+            ps.setDate(2, new java.sql.Date(m.getData().getTime()));
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: " + ex.getLocalizedMessage());
