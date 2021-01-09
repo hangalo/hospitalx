@@ -6,7 +6,6 @@
 package hospitalx.dao;
 
 import hospitalx.dbutil.ConexaoDB;
-import hospitalx.modelo.Funcionario;
 import hospitalx.modelo.Medicamento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,39 +17,7 @@ import java.util.List;
 
 public class MedicamentoDAO {
 
-    private String INSERIR;
-    private String ACTUALIZAR;
-    private String ELIMINAR;
-    private String LISTAR_TUDO;
-    private String BUSCAR_POR_NOME;
-
     
-    public MedicamentoDAO() {
-    }
-
-    public void insert(Medicamento medicamento) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    private static class medicamentos {
-
-        private static void add(Medicamento medicamento) {
-            throw new UnsupportedOperationException("Not supported yet."); 
-        }
-
-        public medicamentos() {
-        }
-    }
-
-    private static class medicamento {
-
-        public medicamento() {
-        }
-    }
-
-   
-    
-    public class medicamentoDAO {
 
     private static final String INSERIR = "INSERT INTO medicamento(nome_medicamento, data_validadeMedicamento)VALUES(?, ?)";
     private static final String ACTUALIZAR = "UPDATE medicamento SET nome_medicamento = ?, = ? WHERE id_funcionario = ?";
@@ -61,19 +28,19 @@ public class MedicamentoDAO {
    
     
   
-    }
+    
 
    ConexaoDB conexaoDB = new ConexaoDB();
 
-    public void insert(Funcionario f) {
+    public void insert(Medicamento m) {
         PreparedStatement ps = null;
         Connection conn = null;
 
         try {
             conn = conexaoDB.ligarBB();
             ps = conn.prepareStatement(INSERIR);
-            ps.setString(1, f.getNomeMedicamento());
-            ps.setDate(2, new java.sql.Date((long) f.getData()));
+            ps.setString(1,m.getNomeMedicamento());
+           ps.setDate(2, new java.sql.Date(m.getData().getTime()));
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: " + ex.getLocalizedMessage());
@@ -125,16 +92,16 @@ public class MedicamentoDAO {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
-        List<Medicamento> medicamento = new ArrayList<>();
+        List<Medicamento> medicamentos = new ArrayList<>();
         try {
             conn = conexaoDB.ligarBB();
             ps = conn.prepareStatement(LISTAR_TUDO);
             rs = ps.executeQuery();
             while (rs.next()) {
                 
-                medicamento = (List<Medicamento>) new medicamento();
-                popularComDados((Medicamento) medicamento, rs);
-               medicamentos.add((Medicamento) medicamento);
+                Medicamento m = new Medicamento();
+                popularComDados(m, rs);
+               medicamentos.add(m);
             }
 
         } catch (SQLException ex) {
@@ -142,7 +109,7 @@ public class MedicamentoDAO {
         } finally {
             ConexaoDB.fecharConexao(conn);
         }
-        return medicamento;
+        return medicamentos;
     }
 
     public List<Medicamento> findByNome(String valor) {
