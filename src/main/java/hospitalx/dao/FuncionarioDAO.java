@@ -35,7 +35,10 @@ public class FuncionarioDAO {
     public void insert(Funcionario f) {
         PreparedStatement ps = null;
         Connection conn = null;
-
+/*
+  telefone_funcionario,rua_funcionario,casa_funcionario, bairro_funcionario, distritito_funcionario, id_municipio
+        
+        */
         try {
             conn = conexaoDB.ligarBB();
             ps = conn.prepareStatement(INSERIR);
@@ -44,14 +47,16 @@ public class FuncionarioDAO {
             ps.setDate(3, new java.sql.Date(f.getDataNascimento().getTime()));
             ps.setString(4, f.getSexoFuncionario().getAbreviatura());
             ps.setString(5, f.getEmailFuncionario());
-            ps.setString(6, f.getRuaFuncionario());
-            ps.setString(7, f.getCasaFuncionario());
-            ps.setString(8, f.getBairroFuncionario());
-            ps.setString(9, f.getDistrititoFuncionario());
-            ps.setInt(10, f.getMunicipio().getIdMunicipio());
+              ps.setString(6, f.getTelefoneFuncionario());
+            ps.setString(7, f.getRuaFuncionario());
+            ps.setString(8, f.getCasaFuncionario());
+            ps.setString(9, f.getBairroFuncionario());
+            ps.setString(10, f.getDistrititoFuncionario());
+            ps.setInt(11, f.getMunicipio().getIdMunicipio());
             ps.executeUpdate();
+            System.out.println("Dados Inseridos com sucesso: FuncionarioDAO:Insert");
         } catch (SQLException ex) {
-            System.err.println("Erro ao carregar dados: " + ex.getLocalizedMessage());
+            System.err.println("Erro ao inserir dados: FuncionarioDAO:inserte: " + ex.getLocalizedMessage());
         } finally {
 
             ConexaoDB.fecharConexao(conn, ps);

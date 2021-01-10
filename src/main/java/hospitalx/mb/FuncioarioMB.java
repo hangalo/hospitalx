@@ -26,7 +26,7 @@ public class FuncioarioMB implements Serializable {
 
     @PostConstruct
     public void inicializar() {
-//        listaFuncionarios = funcionarioDao.findAll();
+    listaFuncionarios = funcionarioDao.findAll();
     }
 
     public Funcionario getFuncionario() {
@@ -54,7 +54,7 @@ public class FuncioarioMB implements Serializable {
     public String insert() {
         funcionarioDao.insert(funcionario);
         funcionario = new Funcionario();
-        return "funcionario-lista?faces-redirect=true";
+        return "staff/funcionarios/gestao-funcionario?faces-redirect=true";
     }
 
     public String eliminar() {
