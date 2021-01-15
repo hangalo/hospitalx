@@ -12,6 +12,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 
 @Named(value = "camaMB")
 @RequestScoped
@@ -62,5 +63,14 @@ public class CamaMB {
         camadao.delete(cama);
         return "cama?faces-redirect=true";
     }
+    
+    public List<SelectItem> getSelectCamas() {
+        List<SelectItem> lista = new ArrayList<>();
+        for (Cama m : camadao.findAll()) {
+            lista.add(new SelectItem(m, m.getNumeroCama()));
+        }
+        return lista;
+    }
+
 
 }

@@ -15,7 +15,7 @@
                     
                     <h:outputLabel value="Nome do Paciente"/>
                     <p:selectOneMenu id="paciente" value="#{internamentoMB.internamento.paciente}" converter="municipioConverver">
-                        <f:selectItem itemLabel="Seleccione o Paciente" noSelectionOption="true"/>
+                        
                         <f:selectItems value="#{pacienteMB.selectPacientes }"/>             
                     </p:selectOneMenu>
                     
@@ -24,7 +24,7 @@
                     
                     <h:outputLabel value="Nome do Medico"/>
                     <p:selectOneMenu id="medico" value="#{internamentoMB.internamento.medico}" converter="municipioConverver">
-                        <f:selectItem itemLabel="Seleccione o Medico" noSelectionOption="true"/>
+                        
                         <f:selectItems value="#{medicoMB.selectMedicos}"/>             
                     </p:selectOneMenu>
 
@@ -32,22 +32,27 @@
                     <p:outputLabel value="Data de Internamento" />
                     <p:datePicker value="#{internamentoMB.internamento.data}" />
                     
-                    <h:outputLabel value="Quarto"/>
-                    <p:selectOneMenu value="#{internamentoMB.internamento.quarto}" converter="municipioConverver">
-                        <f:selectItem itemLabel="Seleccione o quarto" noSelectionOption="true"/>
-                        <f:selectItems value="#{quartoMB.quarto}" var="q" itemLabel="#{q.sigla_quarto}" itemValue="#{q}"/>             
-                    </p:selectOneMenu>
                     
-                    <h:outputLabel value="Cama"/>
-                    <p:selectOneMenu value="#{internamentoMB.internamento.cama}" converter="municipioConverver">
-                        <f:selectItem itemLabel="Seleccione o número de cama" noSelectionOption="true"/>
-                        <f:selectItems value="#{camaMB.cama}" var="c" itemLabel="#{c.numero_cama}" itemValue="#{c}"/>             
+                    
+                    <p:outputLabel value="#{msg['quarto']}"/>
+                    <p:selectOneMenu id="quarto" value="#{internamentoMB.internamento.quarto}" converter="quartoConverver">
+                                <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{quartoMB.selectQuartos}"/>
+                             </p:selectOneMenu>
+                    
+                    <h:outputLabel value="cama"/>
+                    <p:selectOneMenu id="cama" value="#{internamentoMB.internamento.cama}" converter="camaConverver">
+                        <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
+                        <f:selectItems value="#{camaMB.selectCamas}"/>             
                     </p:selectOneMenu>
                     
                     
 
                 </p:panelGrid>
-                <p:commandButton  value="Guardar" action="#{pacienteMB.insert}"/>
+                <h:panelGrid columns="2">
+                <h:commandButton value="#{app['guardar']}"/>
+                <h:commandButton value="#{app['cancelar']}"/>
+            </h:panelGrid>
             </h:form>
         </p:panel>
        

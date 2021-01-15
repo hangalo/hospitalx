@@ -91,9 +91,9 @@ public class PacienteDAO {
     
    public List<Paciente> findAll(){
        List<Paciente> lista = new ArrayList<>();
-       Connection con;
-       PreparedStatement ps;
-       ResultSet rs;
+       Connection con = null;
+       PreparedStatement ps = null;
+       ResultSet rs = null;
        try {
           con = conexao.ligarBB();
           ps = con.prepareStatement(SELECT_ALL);

@@ -72,8 +72,8 @@ public class MedicamentoDAO {
         try {
             conn = conexaoDB.ligarBB();
             ps = conn.prepareStatement(INSERIR);
-            ps.setString(1, f.getNomeMedicamento());
-            ps.setDate(2, new java.sql.Date((long) f.getData()));
+//            ps.setString(1, f.getNomeMedicamento());
+           // ps.setDate(2, new java.sql.Date((long) f.getData()));
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: " + ex.getLocalizedMessage());

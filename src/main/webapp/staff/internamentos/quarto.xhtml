@@ -5,17 +5,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Gestão de Quartos</title>
+        <title>#{msg['quarto']}</title>
     </h:head>
     <h:body>
        
-         <p:panel header="Novo Quarto">
+         <p:panel header="#{app['novo']}#{msg['quarto']}">
 
              <h:form>
                  
                  
                         <p:panelGrid columns="2">
-                            <p:outputLabel value="Sigla do Quarto:" />
+                            <p:outputLabel value="#{msg['Sigla do Quarto']}" />
                             <p:inputText value="#{quartoMB.quarto.siglaQuarto}" />  
                         </p:panelGrid>
                    <p:commandButton  value="Guardar" action="#{quartoMB.insert}"/>  

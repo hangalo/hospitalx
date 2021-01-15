@@ -7,23 +7,33 @@ package hospitalx.mb;
 
 import hospitalx.dao.QuartoDAO;
 import hospitalx.modelo.Quarto;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 
 @Named(value = "quartoMB")
 @RequestScoped
-public class QuartoMB {
+public class QuartoMB implements Serializable{
 
     Quarto quarto = new Quarto();
     QuartoDAO quartodao = new QuartoDAO();
-    List<Quarto> listaQuarto = new ArrayList<>();
+    List<Quarto> quartos = new ArrayList<>();
 
     @PostConstruct
     public void inicializar() {
-        listaQuarto = quartodao.findAll();
+        //quartos = quartodao.findAll();
+    }
+
+    public List<Quarto> getQuartos() {
+        return quartos;
+    }
+
+    public void setQuartos(List<Quarto> quartos) {
+        this.quartos = quartos;
     }
 
     public Quarto getQuarto() {
@@ -36,11 +46,11 @@ public class QuartoMB {
 
     public List<Quarto> getListaQuarto() {
         
-        return listaQuarto;
+        return quartos;
     }
 
-    public void setListaQuarto(List<Quarto> listaQuarto) {
-        this.listaQuarto = listaQuarto;
+    public void setListaQuarto(List<Quarto> quartos) {
+        this.quartos = quartos;
     }
 
     public String insert() {
@@ -62,5 +72,14 @@ public class QuartoMB {
         quartodao.delete(quarto);
         return "quarto?faces-redirect=true";
     }
+    
+    public List<SelectItem> getSelectQuartos() {
+        List<SelectItem> lista = new ArrayList<>();
+        for (Quarto m : quartodao.findAll()) {
+            lista.add(new SelectItem(m, m.getSiglaQuarto()));
+        }
+        return lista;
+    }
+
 
 }

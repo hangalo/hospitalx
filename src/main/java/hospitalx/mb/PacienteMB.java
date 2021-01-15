@@ -67,7 +67,7 @@ public class PacienteMB {
     public List<SelectItem> getSelectPacientes() {
         List<SelectItem> lista = new ArrayList<>();
         for (Paciente m : pacientedao.findAll()) {
-            lista.add(new SelectItem(m, m.getNomePaciente()));
+            lista.add(new SelectItem(m, m.getNomePaciente()+" "+m.getSobrenomPaciente()));
         }
         return lista;
     }
