@@ -22,29 +22,24 @@ import javax.annotation.PostConstruct;
 @SessionScoped
 public class MunicipioMB implements Serializable {
 
-  
-     Municipio municipio = new Municipio();
-   
+    Municipio municipio = new Municipio();
+
     MunicipioDAO municipioDAO = new MunicipioDAO();
-   
+
     List<Municipio> municipios = new ArrayList<>();
 
-   
- 
-
     @PostConstruct
-    public void init() {    
-//        municipios = municipioDAO.findAll();
+    public void init() {
+        municipios = municipioDAO.findAll();
     }
 
-   public List<Municipio> getMunicipios() {
+    public List<Municipio> getMunicipios() {
         return municipios;
     }
 
     public void setMunicipios(List<Municipio> municipios) {
         this.municipios = municipios;
     }
-   
 
     public Municipio getMunicipio() {
         return municipio;
