@@ -30,8 +30,7 @@ public class EnfermeiroMB implements Serializable {
 
     @PostConstruct
     public void inicializar() {
-//        listaEnfermeiros = enfermeiroDao.findAll();
-
+        listaEnfermeiros = enfermeiroDao.findAll();
     }
 
     public Enfermeiro getEnfermeiro() {
@@ -42,6 +41,14 @@ public class EnfermeiroMB implements Serializable {
         this.enfermeiro = enfermeiro;
     }
 
+    public List<Enfermeiro> getListaEnfermeiros() {
+        return listaEnfermeiros;
+    }
+
+    public void setListaEnfermeiros(List<Enfermeiro> listaEnfermeiros) {
+        this.listaEnfermeiros = listaEnfermeiros;
+    }
+
     
     
     
@@ -49,7 +56,7 @@ public class EnfermeiroMB implements Serializable {
     public String insert() {
         enfermeiroDao.insert(enfermeiro);
         enfermeiro = new Enfermeiro();
-        return "enfermeiro-lista?faces-redirect=true";
+        return "staff/enfermeiros/gestao-enfermeiros??faces-redirect=true";
     }
 
     public String eliminar() {

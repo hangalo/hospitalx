@@ -6,7 +6,7 @@
 package hospitalx.modelo;
 
 public enum Sexo {
-    MASCULINO("M", "Masculino"), FEMENINO("F", "Femenino");
+    MASCULINO("M", "Masculino"), FEMENINO("F", "Feminino");
     
     private String abreviatura;
     private String extensao;

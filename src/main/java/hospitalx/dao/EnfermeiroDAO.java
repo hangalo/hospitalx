@@ -52,14 +52,11 @@ public class EnfermeiroDAO {
             ps.setString(10, e.getDistritoEnfermeiro());
             ps.setInt(11, e.getMunicipio().getIdMunicipio());
         } catch (SQLException ex) {
-
-            System.err.println("Erro ao carregar dados: " + ex.getLocalizedMessage());
-
+            System.err.println("Erro ao inserir dados: EnfermeiroDAO:insert: " + ex.getLocalizedMessage());
         } finally {
 
             ConexaoDB.fecharConexao(conn, ps);
         }
-
     }
 
     public void update(Enfermeiro e) {

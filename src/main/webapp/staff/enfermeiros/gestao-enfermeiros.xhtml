@@ -111,7 +111,7 @@
 
             </p:fieldset>
             <h:panelGrid columns="2">
-                <h:commandButton value="#{app['guardar']}"/>
+                <h:commandButton value="#{app['guardar']}" action="#{enfermeiroMB.insert}"/>
                 <h:commandButton value="#{app['cancelar']}"/>
             </h:panelGrid>
         </h:form>
@@ -132,11 +132,15 @@
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                 </h:outputText>
             </p:column>
-            <p:column headerText="#{msg['sexo']}">
-                <h:outputText value="#{e.sexoEnfermeiro}"/>
+            <p:column>
+                <h:commandButton value="#{app['editar']}">
+                    <f:setPropertyActionListener target="" value=""/> 
+                </h:commandButton>
+                
+                <h:commandButton value="#{app['eliminar']}">
+                    <f:setPropertyActionListener target="" value=""/>
+                </h:commandButton>
             </p:column>
-
-
 
         </p:dataTable>
 
