@@ -7,13 +7,13 @@
         <title>Sistema de Gesãto Hospitalar</title>
     </h:head>
     <h:body>
-        
-         <div id="wrapper" style="width: 90%; margin: auto; ">
+
+        <div id="wrapper" style="width: 90%; margin: auto; ">
 
             <div id="menu">
                 <b:navBar brand="#{app['titulo-sistema']}" brandHref="#" fluid="true" >
 
-                    
+
                     <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
                     <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
                     <b:navbarLinks pull="right">
@@ -44,7 +44,7 @@
             </div>
 
 
-           
+
 
 
             <div id="wrapper-content">
@@ -55,33 +55,34 @@
 
                 <div class="container-fluid">
                     <b:jumbotron style="text-align: center; ">
-                      
+
                         <h2 style="color: #8B4513;font-size: 3em; margin-bottom: 30px;">#{app['titulo-sistema']}</h2>
                         <h2 style="color: #8B4513;font-size: 3em; margin-bottom: 30px;">#{app['sistema-gestao-hospitalar']}</h2>
-                        
+
                         <div>
- 
+
                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/pacientes/index-admin-pacientes.jsf">#{app['gestao-pacientes']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/exames/index-admin-exames.jsf">#{app['gestao-exames']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/consultas/index-admin-consultas.jsf">#{app['gestao-consultas']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/internamentos/index-admin-internamentos.jsf">#{app['gestao-internamentos']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/funcionarios/index-admin-funcionarios.jsf">#{app['gestao-funcionarios']}</a>
-                             <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/enfermeiros/index-admin-enfermeiros.jsf">#{app['gestao-enfermeiros']}</a>
-                            
-                            
-                           
-                            
-                           
+                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/exames/index-admin-exames.jsf">#{app['gestao-exames']}</a>
+                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/consultas/index-admin-consultas.jsf">#{app['gestao-consultas']}</a>
+                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/internamentos/index-admin-internamentos.jsf">#{app['gestao-internamentos']}</a>
+                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/funcionarios/index-admin-funcionarios.jsf">#{app['gestao-funcionarios']}</a>
+                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/enfermeiros/index-admin-enfermeiros.jsf">#{app['gestao-enfermeiros']}</a>
+                            <a class="btn btn-primary btn-lg" style="margin: 8px;" href="staff/medicos/gestao-medicos.jsf">#{app['gestao-medicos']}</a>
+
+
+
+
+
 
                         </div>
-                         
-                         
 
 
 
-            
 
-                          
+
+
+
+
 
 
                     </b:jumbotron>
@@ -97,10 +98,12 @@
                             <b:navLink href="index-admin-internamentos.jsf" value="#{app['gestao-internamentos']}" icon="link"></b:navLink>
                             <b:navLink href="#" value="#{app['gestao-consultas']}" icon="link"></b:navLink>
                             <b:navLink href="#" value="#{app['gestao-exames']}" icon="link"></b:navLink>
-                            
-                               
+
+
                             <b:navLink href="#" value="#{app['gestao-funcionarios']}" icon="link"></b:navLink>
                             <b:navLink href="staff/enfermeiros/index-admin-enfermeiros.jsf" value="#{app['gestao-enfermeiros']}" icon="link"></b:navLink>
+                            <!--b:navLink href="staff/medicos/index-admin-medicos.jsf" value="#{app['gestao-medicos']}" icon="link"></b:navLink -->
+                            <b:navLink href="staff/medicos/gestao-medicos.jsf" value="#{app['gestao-medicos']}" icon="link"></b:navLink>
                         </b:pillLinks>
                         <b:messages />
 
@@ -109,7 +112,7 @@
             </div>
 
         </div>        
-        
+
     </h:body>
 </html>
 

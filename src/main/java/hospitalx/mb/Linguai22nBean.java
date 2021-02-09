@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hospitalx.mb;
+package org.ofmcap.domus.mbean;
 
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -18,9 +18,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 
-@Named(value = "linguai18nBean")
+@Named(value = "linguai22nBean")
 @SessionScoped
-public class Linguai18nBean implements Serializable {
+public class Linguai22nBean implements Serializable {
 
     private String lingua;
     private Map<String, Object> listaLinguas;
@@ -51,8 +51,8 @@ public class Linguai18nBean implements Serializable {
         listaLinguas = new LinkedHashMap<>();
         listaLinguas.put("Português", new Locale("pt", "PT"));
         listaLinguas.put("Inglês", new Locale("en", "GB"));
-        listaLinguas.put("Francês", new Locale("fr", "FR"));        
-        listaLinguas.put("Espanha", new Locale("es", "ES"));
+        listaLinguas.put("Francês", new Locale("fr", "FR"));
+
     }
 
     public void mudarLingua(ValueChangeEvent event) {
