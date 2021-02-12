@@ -24,6 +24,7 @@ public class ConexaoDB {
 
         try {
             Class.forName(DRIVERMYSQL8);
+            //return conn = DriverManager.getConnection(URL, USER, PASSWORD);
             return conn = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println("Erro de conexao com a base de dados" + ex.getLocalizedMessage());

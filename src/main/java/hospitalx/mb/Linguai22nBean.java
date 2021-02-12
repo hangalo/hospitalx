@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.ofmcap.domus.mbean;
+//package org.ofmcap.domus.mbean;
+
+package hospitalx.mb;
 
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;

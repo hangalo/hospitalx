@@ -36,7 +36,7 @@ public class MedicoMB {
     }
 
     public List<Medico> getListaMedico() {
-        
+
         return listaMedico;
     }
 
@@ -58,18 +58,30 @@ public class MedicoMB {
         medicodao.update(medico);
         return "medico";
     }
-    
+
     public String delete() {
         medicodao.delete(medico);
         return "medico?faces-redirect=true";
     }
-    
+
     public List<SelectItem> getSelectMedicos() {
         List<SelectItem> lista = new ArrayList<>();
         for (Medico m : medicodao.findAll()) {
-            lista.add(new SelectItem(m, m.getNomeMedico()+" "+m.getSobrenomMedico()));
+            lista.add(new SelectItem(m, m.getNomeMedico() + " " + m.getSobrenomMedico()));
         }
         return lista;
+    }
+
+    public List<Medico> getMedico(int number) {
+        List<Medico> medicos = new ArrayList<>();
+
+        if (listaMedico.size() > number) {
+            for (int i = 0; i < number; i++) {
+                medicos.add(listaMedico.get(i));
+            }
+            return medicos;
+        }
+        return listaMedico;        
     }
 
 }
