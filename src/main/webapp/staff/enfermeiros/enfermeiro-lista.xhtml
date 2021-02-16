@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msg['gestao-enfermeiros']}</title>
+    </h:head>
+    <h:body>
+
+        <p:panel header="#{app['listar']}#{msg['enfermeiros']}">
+
+            <p:dataTable value="#{enfermeiroMB.listaEnfermeiros}" var="e" class="table table-striped" filterBy="#{e.nomeEnfermeiro}">
+                <p:column headerText="#{msg['nome']}">
+                    <h:outputText value="#{e.nomeEnfermeiro}"/>
+                </p:column>
+                <p:column headerText="#{msg['sobrenome']}">
+                    <h:outputText value="#{e.sobrenomeEnfermeiro}"/>
+                </p:column>
+                <p:column headerText="#{msg['sexo']}">
+                    <h:outputText value="#{e.sexoEnfermeiro.abreviatura}"/>
+                </p:column>
+                <p:column headerText="#{msg['data-nascimento']}">
+                    <h:outputText value="#{e.dataNascimentoEnfermeiro}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </p:column>
+
+                <p:column>
+                    <p:panelGrid columns="2">
+                        <p:commandButton value="#{app['editar']}" onclick="PF('wvEditar').show();" icon="ui-icon-pencil">
+                            <f:setPropertyActionListener target="#{enfermeiroMB.enfermeiro}" value="#{e}"/>   
+                        </p:commandButton>
+
+                        <p:commandButton value="#{app['eliminar']}" onclick="PF('dlDelete').show();" icon="ui-icon-trash">
+                            <f:setPropertyActionListener target="#{enfermeiroMB.enfermeiro}" value="#{e}"/> 
+                        </p:commandButton>
+                    </p:panelGrid>      
+                </p:column>
+
+            </p:dataTable>
+        </p:panel> 
+
+        <h:form id="formEditar">
+
+            <p:dialog header="Confirmação" widgetVar="dlDelete">
+                <p:outputLabel value="Deseja Eliminar o Registo ?"/> 
+                <p:panelGrid columns="2" >
+                    <p:commandButton value="SIM" action="#{enfermeiroMB.eliminar}" onclick="PF('dlDelete').hide();"/>
+                    <p:commandButton value="NÃO" onclick="PF('dlDelete').hide();"/>
+                </p:panelGrid>
+            </p:dialog>
+
+            <p:dialog header="Editar Dados" widgetVar="wvEditar" modal="true" draggable="false" resizable="false" closeOnEscape="true">
+                <p:panel>
+
+                    <h:panelGrid columns="2">
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['nome']}"/>
+                                <h:inputText value="#{enfermeiroMB.enfermeiro.nomeEnfermeiro}" size="40"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['sobrenome']}"/>
+                                <h:inputText value="#{enfermeiroMB.enfermeiro.sobrenomeEnfermeiro}" size="40"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="2">
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['sexo']}"/>
+                            </p:panelGrid>
+                            <p:panelGrid columns="2">
+                                <p:selectOneRadio id="sexo" value="#{enfermeiroMB.enfermeiro.sexoEnfermeiro}">
+                                    <f:selectItems value="#{enfermeiroMB.opSexos}" />
+                                </p:selectOneRadio >
+                            </p:panelGrid>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <h:panelGroup>
+                                <p:panelGrid columns="1">
+                                    <p:outputLabel value="#{msg['data-nascimento']}"/>
+                                    <p:calendar value="#{enfermeiroMB.enfermeiro.dataNascimentoEnfermeiro}" pattern="dd/MM/yy"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+
+                    <h:panelGrid columns="2">
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['telefone']}"/>
+                                <h:inputText value="#{enfermeiroMB.enfermeiro.telefoneEnfermeiro}" size="35"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['email']}"/>
+                                <h:inputText value="#{enfermeiroMB.enfermeiro.emailEnfermeiro}" size="35"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+                    <p:fieldset legend="#{msg['endereco']}">
+                        <h:panelGrid columns="5">
+                            <h:panelGroup>
+                                <p:panelGrid columns="1">
+                                    <p:outputLabel value="#{msg['casa']}"/>
+                                    <h:inputText value="#{enfermeiroMB.enfermeiro.casaEnfermeiro}"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <p:panelGrid columns="1">
+                                    <p:outputLabel value="#{msg['rua']}"/>
+                                    <h:inputText value="#{enfermeiroMB.enfermeiro.ruaEnfermeiro}"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:panelGrid columns="1">
+                                    <p:outputLabel value="#{msg['bairro']}"/>
+                                    <h:inputText value="#{enfermeiroMB.enfermeiro.bairroEnfermeiro}"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <p:panelGrid columns="1">
+                                    <p:outputLabel value="#{msg['distritito']}"/>
+                                    <h:inputText value="#{enfermeiroMB.enfermeiro.bairroEnfermeiro}"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+
+
+                            <h:panelGroup>
+                                <p:panelGrid columns="1">
+                                    <p:outputLabel value="#{msg['municipio']}"/>
+                                    <p:selectOneMenu id="municipio" value="#{enfermeiroMB.enfermeiro.municipio}" converter="municipioConverver">
+                                        <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
+                                        <f:selectItems value="#{municipioMB.municipios}" var="m" itemLabel="#{m.nomeMunicipio}" itemValue="#{m}"/>             
+                                    </p:selectOneMenu> 
+                                </p:panelGrid>
+                            </h:panelGroup>
+                        </h:panelGrid>
+
+
+                    </p:fieldset>
+                    <h:panelGrid columns="2">
+                        <p:commandButton value="#{app['guardar']}" action="#{enfermeiroMB.editar}" icon="ui-icon-disk"/>
+                        <p:commandButton value="#{app['cancelar']}" onclick="PF('wvEditar').hide();"/>
+                    </h:panelGrid>
+                </p:panel>
+
+            </p:dialog>
+
+        </h:form>
+
+
+    </h:body>
+</html>
+
+

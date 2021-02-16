@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
+import javax.faces.view.ViewScoped;
 
 @Named(value = "funcioarioMB")
-@SessionScoped
+@ViewScoped
 public class FuncioarioMB implements Serializable {
 
     Funcionario funcionario = new Funcionario();

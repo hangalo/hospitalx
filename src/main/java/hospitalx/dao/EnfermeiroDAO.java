@@ -23,7 +23,7 @@ import java.util.List;
 
 public class EnfermeiroDAO {
 
-    private static final String INSERIR = "INSERT INTO enfermeiro(nome_enfermeiro,sobrenom_enfermeiro,data_nascimento_enfermeiro,sexo_enfermeiro,email_enfermeiro,telefone_enfermeiro,rua_enfermeiro,casa_enfermeiro,bairro_enfermeiro,distritito_enfermeiro,id_municipio) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERIR = "INSERT INTO enfermeiro(nome_enfermeiro,sobrenom_enfermeiro,data_nascimento_enfermeiro,sexo_enfermeiro,email_enfermeiro,telefone_enfermeiro,rua_enfermeiro,casa_enfermeiro,bairro_enfermeiro,distritito_enfermeiro,id_municipio)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     private static final String ACTUALIZAR = "UPDATE enfermeiro SET nome_enfermeiro = ?,sobrenom_enfermeiro = ?,data_nascimento_enfermeiro = ?,sexo_enfermeiro = ?,email_enfermeiro = ?,telefone_enfermeiro = ?,rua_enfermeiro = ?,casa_enfermeiro = ?,bairro_enfermeiro = ?,distritito_enfermeiro = ?,id_municipio = ? WHERE id_enfermeiro = ?";
     private static final String ELIMINAR = "DELETE FROM enfermeiro WHERE id_enfermeiro = ?";
     private static final String BUSCAR_POR_CODIGO = "SELECT id_enfermeiro,nome_enfermeiro,sobrenom_enfermeiro,data_nascimento_enfermeiro,sexo_enfermeiro,email_enfermeiro,telefone_enfermeiro,rua_enfermeiro,casa_enfermeiro,bairro_enfermeiro,distritito_enfermeiro, nome_municipio FROM enfermeiro e INNER JOIN municipio m ON e.id_municipio = m.id_municipio WHERE id_enfermeiro = ?";
@@ -51,6 +51,8 @@ public class EnfermeiroDAO {
             ps.setString(9, e.getBairroEnfermeiro());
             ps.setString(10, e.getDistritoEnfermeiro());
             ps.setInt(11, e.getMunicipio().getIdMunicipio());
+            ps.executeUpdate();
+            System.out.println("Dados Inseridos com sucesso: EnfermeiroDAO:Insert");
         } catch (SQLException ex) {
             System.err.println("Erro ao inserir dados: EnfermeiroDAO:insert: " + ex.getLocalizedMessage());
         } finally {
@@ -78,6 +80,7 @@ public class EnfermeiroDAO {
             ps.setString(9, e.getBairroEnfermeiro());
             ps.setString(10, e.getDistritoEnfermeiro());
             ps.setInt(11, e.getMunicipio().getIdMunicipio());
+            ps.executeUpdate();
         } catch (SQLException ex) {
 
             System.err.println("Erro ao carregar dados: " + ex.getLocalizedMessage());
@@ -87,7 +90,8 @@ public class EnfermeiroDAO {
             ConexaoDB.fecharConexao(conn, ps);
         }
     }
-
+    
+    
     public void delete(Enfermeiro e) {
         PreparedStatement ps = null;
         Connection conn = null;
@@ -137,7 +141,7 @@ public class EnfermeiroDAO {
         try {
             conn = conexaoDB.ligarBB();
 
-            ps = conn.prepareStatement(BUSCAR_POR_CODIGO);
+            ps = conn.prepareStatement(BUSCAR_POR_NOME);
             ps.setString(1, "%" + valor + "%");
             ps.setString(2, "%" + valor + "%");
             rs = ps.executeQuery();
@@ -163,7 +167,7 @@ public class EnfermeiroDAO {
             enfermeiro.setNomeEnfermeiro(rs.getString("nome_enfermeiro"));
             enfermeiro.setSobrenomeEnfermeiro(rs.getString("sobrenom_enfermeiro"));
             enfermeiro.setDataNascimentoEnfermeiro(rs.getDate("data_nascimento_enfermeiro"));
-            enfermeiro.setSexoEnfermeiro(Sexo.getAbreviatura(rs.getString(" sexo_enfermeiro")));
+            enfermeiro.setSexoEnfermeiro(Sexo.getAbreviatura(rs.getString("sexo_enfermeiro")));
             enfermeiro.setEmailEnfermeiro(rs.getString("email_enfermeiro"));
             enfermeiro.setTelefoneEnfermeiro(rs.getString("telefone_enfermeiro"));
             enfermeiro.setRuaEnfermeiro(rs.getString("rua_enfermeiro"));

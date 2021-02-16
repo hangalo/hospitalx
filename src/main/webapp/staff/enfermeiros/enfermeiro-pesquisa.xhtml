@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msg['gestao-enfermeiros']}</title>
+    </h:head>
+    <h:body>
+
+        <p:panel header="#{app['procurar']}#{msg['enfermeiros']}">
+            <br></br> 
+            <br></br>
+            <h:form id="pesquisa">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="*Insira o Nome/Sobrenome:"/>
+                    <p:inputText value="#{enfermeiroMB.letrasNomeSobrenome}" required="true" requiredMessage="Campo Obrigatório"/>
+                    <h:message for="pesquisa"/>
+                    <br></br> <h:commandButton value="Pesquisar ..."/><br></br> <br></br>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form id="PesquisaForm">
+
+                <p:dataTable value="#{enfermeiroMB.pesquisaNomeSobrenome}" var="e">
+                    <p:column headerText="#{msg['nome']}">
+                        <h:outputText value="#{e.nomeEnfermeiro}"/>
+                    </p:column>
+                    <p:column headerText="#{msg['sobrenome']}">
+                        <h:outputText value="#{e.sobrenomeEnfermeiro}"/>
+                    </p:column>
+                    <p:column headerText="#{msg['sexo']}">
+                        <h:outputText value="#{e.sexoEnfermeiro.abreviatura}"/>
+                    </p:column>
+                    <p:column headerText="#{msg['data-nascimento']}">
+                        <h:outputText value="#{e.dataNascimentoEnfermeiro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="#{msg['municipio']}">
+                        <h:outputText value="#{e.municipio.nomeMunicipio}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msg['telefone']}">
+                        <h:outputText value="#{e.telefoneEnfermeiro}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </h:form>
+
+        </p:panel>
+
+    </h:body>
+</html>
+
+
+

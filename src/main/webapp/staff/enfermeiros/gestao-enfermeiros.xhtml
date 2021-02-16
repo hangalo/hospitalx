@@ -11,112 +11,111 @@
 
         <p:panel header="#{app['novo']}#{msg['enfermeiro']}">
 
-        <h:form>
+            <h:form>
 
-            <h:panelGrid columns="2">
-                <h:panelGroup>
-                    <p:panelGrid columns="1">
-                        <p:outputLabel value="#{msg['nome']}"/>
-                        <h:inputText value="#{enfermeiroMB.enfermeiro.nomeEnfermeiro}" size="40"/>
-                    </p:panelGrid>
-                </h:panelGroup>
-
-                <h:panelGroup>
-                    <p:panelGrid columns="1">
-                        <p:outputLabel value="#{msg['sobrenome']}"/>
-                        <h:inputText value="#{enfermeiroMB.enfermeiro.sobrenomeEnfermeiro}" size="40"/>
-                    </p:panelGrid>
-                </h:panelGroup>
-            </h:panelGrid>
-
-            <h:panelGrid columns="2">
-                <h:panelGroup>
-                    <p:panelGrid columns="1">
-                        <p:outputLabel value="#{msg['sexo']}"/>
-                    </p:panelGrid>
-                    <p:panelGrid columns="2">
-                        <p:selectOneRadio id="sexo" value="#{enfermeiroMB.enfermeiro.sexoEnfermeiro}">
-                            <f:selectItems value="#{enfermeiroMB.opSexos}" />
-                        </p:selectOneRadio >
-                    </p:panelGrid>
-                </h:panelGroup>
-                <h:panelGroup>
+                <h:panelGrid columns="2">
                     <h:panelGroup>
                         <p:panelGrid columns="1">
-                            <p:outputLabel value="#{msg['data-nascimento']}"/>
-                            <p:calendar value="#{enfermeiroMB.enfermeiro.dataNascimentoEnfermeiro}" pattern="dd/MM/yy"/>
-                        </p:panelGrid>
-                    </h:panelGroup>
-                </h:panelGroup>
-            </h:panelGrid>
-
-
-            <h:panelGrid columns="2">
-
-                <h:panelGroup>
-                    <p:panelGrid columns="1">
-                        <p:outputLabel value="#{msg['telefone']}"/>
-                        <h:inputText value="#{enfermeiroMB.enfermeiro.telefoneEnfermeiro}" size="35"/>
-                    </p:panelGrid>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <p:panelGrid columns="1">
-                        <p:outputLabel value="#{msg['email']}"/>
-                        <h:inputText value="#{enfermeiroMB.enfermeiro.emailEnfermeiro}" size="35"/>
-                    </p:panelGrid>
-                </h:panelGroup>
-            </h:panelGrid>
-
-            <p:fieldset legend="#{msg['endereco']}">
-                <h:panelGrid columns="5">
-                    <h:panelGroup>
-                        <p:panelGrid columns="1">
-                            <p:outputLabel value="#{msg['casa']}"/>
-                            <h:inputText value="#{enfermeiroMB.enfermeiro.casaEnfermeiro}"/>
+                            <p:outputLabel value="#{msg['nome']}"/>
+                            <h:inputText value="#{enfermeiroMB.enfermeiro.nomeEnfermeiro}" size="40"/>
                         </p:panelGrid>
                     </h:panelGroup>
 
                     <h:panelGroup>
                         <p:panelGrid columns="1">
-                            <p:outputLabel value="#{msg['rua']}"/>
-                            <h:inputText value="#{enfermeiroMB.enfermeiro.ruaEnfermeiro}"/>
-                        </p:panelGrid>
-                    </h:panelGroup>
-                    <h:panelGroup>
-                        <p:panelGrid columns="1">
-                            <p:outputLabel value="#{msg['bairro']}"/>
-                            <h:inputText value="#{funcioarioMB.funcionario.bairroFuncionario}"/>
-                        </p:panelGrid>
-                    </h:panelGroup>
-
-                    <h:panelGroup>
-                        <p:panelGrid columns="1">
-                            <p:outputLabel value="#{msg['distritito']}"/>
-                            <h:inputText value="#{enfermeiroMB.enfermeiro.bairroEnfermeiro}"/>
-                        </p:panelGrid>
-                    </h:panelGroup>
-
-
-                    <h:panelGroup>
-                        <p:panelGrid columns="1">
-                            <p:outputLabel value="#{msg['municipio']}"/>
-                            <p:selectOneMenu id="municipio" value="#{enfermeiroMB.enfermeiro.municipio}" converter="municipioConverver">
-                                <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
-                                <f:selectItems value="#{municipioMB.municipios}" var="m" itemLabel="#{m.nomeMunicipio}" itemValue="#{m}"/>             
-                            </p:selectOneMenu> 
+                            <p:outputLabel value="#{msg['sobrenome']}"/>
+                            <h:inputText value="#{enfermeiroMB.enfermeiro.sobrenomeEnfermeiro}" size="40"/>
                         </p:panelGrid>
                     </h:panelGroup>
                 </h:panelGrid>
 
+                <h:panelGrid columns="2">
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['sexo']}"/>
+                        </p:panelGrid>
+                        <p:panelGrid columns="2">
+                            <p:selectOneRadio id="sexo" value="#{enfermeiroMB.enfermeiro.sexoEnfermeiro}">
+                                <f:selectItems value="#{enfermeiroMB.opSexos}" />
+                            </p:selectOneRadio >
+                        </p:panelGrid>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['data-nascimento']}"/>
+                                <p:calendar value="#{enfermeiroMB.enfermeiro.dataNascimentoEnfermeiro}" pattern="dd/MM/yy"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:panelGrid>
 
-            </p:fieldset>
-            <h:panelGrid columns="2">
-                <h:commandButton value="#{app['guardar']}" action="#{enfermeiroMB.insert}"/>
-                <h:commandButton value="#{app['cancelar']}"/>
-            </h:panelGrid>
-        </h:form>
-</p:panel>
 
+                <h:panelGrid columns="2">
+
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['telefone']}"/>
+                            <h:inputText value="#{enfermeiroMB.enfermeiro.telefoneEnfermeiro}" size="35"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['email']}"/>
+                            <h:inputText value="#{enfermeiroMB.enfermeiro.emailEnfermeiro}" size="35"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+                </h:panelGrid>
+
+                <p:fieldset legend="#{msg['endereco']}">
+                    <h:panelGrid columns="5">
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['casa']}"/>
+                                <h:inputText value="#{enfermeiroMB.enfermeiro.casaEnfermeiro}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['rua']}"/>
+                                <h:inputText value="#{enfermeiroMB.enfermeiro.ruaEnfermeiro}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['bairro']}"/>
+                                <h:inputText value="#{funcioarioMB.funcionario.bairroFuncionario}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['distritito']}"/>
+                                <h:inputText value="#{enfermeiroMB.enfermeiro.bairroEnfermeiro}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['municipio']}"/>
+                                <p:selectOneMenu id="municipio" value="#{enfermeiroMB.enfermeiro.municipio}" converter="municipioConverver">
+                                    <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItems value="#{municipioMB.municipios}" var="m" itemLabel="#{m.nomeMunicipio}" itemValue="#{m}"/>             
+                                </p:selectOneMenu> 
+                            </p:panelGrid>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+
+                </p:fieldset>
+                <h:panelGrid columns="2">
+                    <p:commandButton value="#{app['guardar']}" action="#{enfermeiroMB.insert}" icon="ui-icon-disk"/>
+                    <p:commandButton value="#{app['cancelar']}" action="index-admin-enfermeiros?faces-redirect=true"/>
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
 
 
 
@@ -132,16 +131,6 @@
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                 </h:outputText>
             </p:column>
-            <p:column>
-                <h:commandButton value="#{app['editar']}">
-                    <f:setPropertyActionListener target="" value=""/> 
-                </h:commandButton>
-                
-                <h:commandButton value="#{app['eliminar']}">
-                    <f:setPropertyActionListener target="" value=""/>
-                </h:commandButton>
-            </p:column>
-
         </p:dataTable>
 
     </h:body>
