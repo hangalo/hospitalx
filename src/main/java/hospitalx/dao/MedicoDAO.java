@@ -19,7 +19,7 @@ public class MedicoDAO {
 
     private String LISTAR_TODOS = "SELECT a.id_medico, a.nome_medico, a.sobrenom_medico, a.data_nascimento_medico,a.sexo_medico,"
             + "a.email_medico, a.telefone_medico, a.rua_medico, a.casa_medico,a.bairro_medico, a.distritito_medico,b.nome_municipio"
-            + " FROM medico a INNER JOIN municipio b ON a.id_municipio = b.id_municipio";
+            + " FROM medico a INNER JOIN municipio b ON a.id_municipio = b.id_municipio";        
     private String PESQUISAR_POR_NOME = "SELECT a.id_medico, a.nome_medico, a.sobrenom_medico, a.data_nascimento_medico,a.sexo_medico,"
             + "a.email_medico, a.telefone_medico, a.rua_medico, a.casa_medico,a.bairro_medico, a.distritito_medico,b.nome_municipio"
             + " FROM medico a INNER JOIN municipio b ON a.id_municipio = b.id_municipio"

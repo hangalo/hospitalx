@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Sistema de Gestão Hospitalar</title>
+    </h:head>
+    <h:body>
+
+            <div id="wrapper" style="width: 90%; margin: auto; ">
+               
+                <div id="menu">
+                    
+                    <b:navBar brand="#{app['titulo-sistema']}" brandHref="../../index.jsf" fluid="true" >
+                        <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+                        <b:navbarLinks pull="right">
+                            <h:form>
+                                <h:commandButton image="/resources/images/United-kingdom-icon.png" action="#{linguai18nBean.changeLanguage('en_GB')}" />
+                                <h:commandButton image="/resources/images/France-icon.png" action="#{linguai18nBean.changeLanguage('fr_FR')}" />
+                                <h:commandButton image="/resources/images/Spain-icon.png" action="#{linguai18nBean.changeLanguage('es_ES')}"/>
+                                <h:commandButton image="/resources/images/Portugal-icon.png" action="#{linguai18nBean.changeLanguage('pt_PT')}"/>
+                            </h:form>
+                        </b:navbarLinks>                        
+                        <b:navbarLinks pull="right" styleClass="hidden-xs">
+                            <b:dropMenu value="Listas">
+                                <b:navLink value="Lista X" href="#"></b:navLink>
+                                <b:navLink value="Lista X" href="#"></b:navLink>
+                                <b:navLink value="Lista X" href="#"></b:navLink>
+                                <b:navLink value="Lista X" href="#"></b:navLink>
+                                <b:navLink></b:navLink>
+                                <b:navLink header="Lista X"></b:navLink>
+                                <b:navLink value="Lista X" href="#"></b:navLink>
+                                <b:navLink value="Lista X" href="#"></b:navLink>
+                                <b:navLink value="Lista X" href="#"></b:navLink>
+                            </b:dropMenu>
+                        </b:navbarLinks>                        
+                    </b:navBar>
+                </div>
+
+                <div id="wrapper-content">
+                    <div id="content">
+
+                    </div>
+
+                    <div class="container-fluid">
+                        <b:jumbotron style="text-align: center; ">
+                            <h2 style="color: #8B4513;font-size: 3em; margin-bottom: 30px;">#{app['titulo-sistema']}</h2>
+                            <h2 style="color: #8B4513;font-size: 3em; margin-bottom: 30px;">#{app['gestao-medicos']}</h2>
+
+                            <div>
+                                <a class="btn btn-primary btn-lg" style="margin: 8px;" href="gestao-medicos.jsf">#{app['novo']}</a>
+                                <a class="btn btn-primary btn-lg" style="margin: 8px;" href="#">#{app['listar']}</a>
+                                <a class="btn btn-primary btn-lg" style="margin: 8px;" href="#">#{app['procurar']}</a>
+                            </div>
+                        </b:jumbotron>
+                    </div>
+                </div>
+                
+
+                <div id="footer">
+                    <h:form>
+                        <b:panel look="primary" title="Area amnistrativa (Gestione)">
+                            <b:pillLinks>
+                                <!--b:navLink href="#" value="#{app['gestao-pacientes']}"icon="globe" iconAlign="right"></b:navLink -->
+                                <b:navLink href="#" value="#{app['gestao-internamentos']}" icon="link"></b:navLink>
+                                <b:navLink href="#" value="#{app['gestao-consultas']}" icon="link"></b:navLink>
+                                <b:navLink href="#" value="#{app['gestao-exames']}" icon="link"></b:navLink>
+
+                                <b:navLink href="#" value="#{app['gestao-funcionarios']}" icon="link"></b:navLink>
+                                <b:navLink href="#" value="#{app['gestao-enfermeiros']}" icon="link"></b:navLink>
+                            </b:pillLinks>
+                            <b:messages />
+                        </b:panel>
+                    </h:form>
+                </div>
+
+            </div>        
+
+        </h:body>
+</html>
+
