@@ -1,12 +1,148 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Sistema de Gesãto Hospitalar</title>
     </h:head>
     <h:body>
-        Novo Médico 
+        
+        <div id="wrapper" style="width: 90%; margin: auto; ">
+            <br/>
+            <div id="menu">
+                <b:navBar brand="#{app['titulo-sistema']}" brandHref="http://localhost:8080/hospitalx/index.jsf" fluid="true" >
+                    <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+                    <b:navbarLinks pull="left"><b:navLink value=" " href="#"></b:navLink></b:navbarLinks>
+                    <b:navbarLinks pull="right">
+                        <h:form >
+                            <br/>
+                            <h:commandButton image="/resources/images/United-kingdom-icon.png" action="#{linguai18nBean.changeLanguage('en_GB')}" />
+                            <h:commandButton image="/resources/images/France-icon.png" action="#{linguai18nBean.changeLanguage('fr_FR')}" />
+                            <h:commandButton image="/resources/images/Spain-icon.png" action="#{linguai18nBean.changeLanguage('es_ES')}"/>
+                            <h:commandButton image="/resources/images/Portugal-icon.png" action="#{linguai18nBean.changeLanguage('pt_PT')}"/>
+                            <br/>
+                        </h:form>
+                    </b:navbarLinks>                    
+                </b:navBar>                
+            </div>
+        
+        
+        
+        <!-- COMEÇA AQUI -->
+        <p:panel header="Médico">
+
+            <h:form>
+
+                <h:panelGrid columns="2">
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['nome']}"/>
+                            <h:inputText value="#{medicoMB.medico.nomeMedico}" size="40"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['sobrenome']}"/>
+                            <h:inputText value="#{medicoMB.medico.sobrenomMedico}" size="40"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+                </h:panelGrid>
+
+                <h:panelGrid columns="2">
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['sexo']}"/>
+                        </p:panelGrid>
+                        <p:panelGrid columns="2">
+                            <p:selectOneRadio id="sexo" value="#{medicoMB.medico.sexoMedico}">
+                                <f:selectItems value="#{medicoMB.opSexos}"/>
+                            </p:selectOneRadio>
+                            
+                        </p:panelGrid>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['data-nascimento']}"/>
+                                <p:calendar value="#{medicoMB.medico.dataNascimentoMedico}" pattern="dd/MM/yy"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:panelGrid>
+
+
+                <h:panelGrid columns="2">
+
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['telefone']}"/>
+                            <h:inputText value="#{medicoMB.medico.telefoneMedico}" size="35"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <p:panelGrid columns="1">
+                            <p:outputLabel value="#{msg['email']}"/>
+                            <h:inputText value="#{medicoMB.medico.emailMedico}" size="35"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
+                </h:panelGrid>
+
+                <p:fieldset legend="#{msg['endereco']}">
+                    <h:panelGrid columns="5">
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['casa']}"/>
+                                <h:inputText value="#{medicoMB.medico.casaMedico}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['rua']}"/>
+                                <h:inputText value="#{medicoMB.medico.ruaMedico}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['bairro']}"/>
+                                <h:inputText value="#{medicoMB.medico.bairroMedico}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['distritito']}"/>
+                                <h:inputText value="#{medicoMB.medico.distrititoMedico}"/>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+
+                        <h:panelGroup>
+                            <p:panelGrid columns="1">
+                                <p:outputLabel value="#{msg['municipio']}"/>
+                                <p:selectOneMenu id="municipio" value="#{medicoMB.medico.municipio}" converter="municipioConverver">                                    
+                                    <f:selectItem itemLabel="#{app['seleccionar']}" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItems value="#{municipioMB.municipios}" var="m" itemLabel="#{m.nomeMunicipio}" itemValue="#{m}"/>             
+                                </p:selectOneMenu> 
+                            </p:panelGrid>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+
+                </p:fieldset>
+                <h:panelGrid columns="3">
+                    <p:commandButton value="#{app['guardar']}" action="#{medicoMB.insert}" icon="ui-icon-disk"/>
+                    <p:commandButton value="#{app['cancelar']}" action="index-admin-enfermeiros?faces-redirect=true"/>
+                    <p:commandButton value="Voltar" action="gestao-medicos?faces-redirect=true"/>
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+        <!-- TERMINA AQUI -->
+        </div>
     </h:body>
 </html>
 

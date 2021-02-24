@@ -7,6 +7,7 @@ package hospitalx.mb;
 
 import hospitalx.dao.MedicoDAO;
 import hospitalx.modelo.Medico;
+import hospitalx.modelo.Sexo;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -47,7 +48,8 @@ public class MedicoMB {
     public String insert() {
         medicodao.insert(medico);
         medico = new Medico();
-        return "medico?faces-redirect=true";
+        //return "medico?faces-redirect=true";
+        return "gestao-medicos?faces-redirect=true";
     }
 
     public String startEdit() {
@@ -82,6 +84,14 @@ public class MedicoMB {
             return medicos;
         }
         return listaMedico;        
+    }
+    
+    public List<SelectItem> getOpSexos() {
+        List<SelectItem> list = new ArrayList<>();
+        for (Sexo sexo : Sexo.values()) {
+            list.add(new SelectItem(sexo, sexo.getAbreviatura()));
+        }
+        return list;
     }
 
 }

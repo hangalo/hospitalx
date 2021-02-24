@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema de Gesãto Hospitalar</title>
+    </h:head>
+    <h:body>
+
+        <div id="wrapper" style="width: 90%; margin: auto; ">
+            <br/>
+            <div id="menu">
+                <b:navBar brand="#{app['titulo-sistema']}" brandHref="http://localhost:8080/hospitalx/index.jsf" fluid="true" >
+                    <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+                    <b:navbarLinks pull="left"><b:navLink value=" " href="#"></b:navLink></b:navbarLinks>
+                    <b:navbarLinks pull="right">
+                        <h:form >
+                            <br/>
+                            <h:commandButton image="/resources/images/United-kingdom-icon.png" action="#{linguai18nBean.changeLanguage('en_GB')}" />
+                            <h:commandButton image="/resources/images/France-icon.png" action="#{linguai18nBean.changeLanguage('fr_FR')}" />
+                            <h:commandButton image="/resources/images/Spain-icon.png" action="#{linguai18nBean.changeLanguage('es_ES')}"/>
+                            <h:commandButton image="/resources/images/Portugal-icon.png" action="#{linguai18nBean.changeLanguage('pt_PT')}"/>
+                            <br/>
+                        </h:form>
+                    </b:navbarLinks>                    
+                </b:navBar>                
+            </div>
+
+
+
+            <!-- COMEÇA AQUI -->
+            <p:panel header="Médico">
+                <div class="card ui-fluid ">
+                    <h:form>
+                        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+                        <div class="p-formgrid p-grid">
+
+                                <h:panelGrid columns="1">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel value="Simple" for="@next"/>
+                                        <p:autoComplete id="acSimple" value="#"
+                                                        completeMethod="#" scrollHeight="250"/>
+                                    </div>
+                                </h:panelGrid>
+                                <h:panelGrid columns="1">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel value="Min Length (3)" for="@next"/>
+                                        <p:autoComplete id="acMinLength" minQueryLength="3" value="#"
+                                                        completeMethod="#" effect="fade" scrollHeight="250"/>
+                                    </div>
+                                </h:panelGrid>
+
+                        </div>
+                    </h:form>
+                </div>
+            </p:panel>
+            <!-- TERMINA AQUI -->
+        </div>
+
+    </h:body>
+</html>
+
